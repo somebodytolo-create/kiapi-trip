@@ -30,8 +30,11 @@ h1{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 6px}
 main{padding-top:14px}
 .band{padding:38px 28px 48px}
 .band-inner{max-width:1440px;margin:0 auto}
-.band.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.band.alt{background:#fff;border-top:1px solid var(--line)}
+.band.tint{background:#e9f0fc;border-top:1px solid #d8e4f8}
+.band.gray{background:#f0f2f6;border-top:1px solid var(--line)}
 .band:last-of-type{padding-bottom:84px}
+.list-col{background:#f5f7fa;border-radius:12px;padding:10px}
 .sec-head h2{font-size:17px;font-weight:800;letter-spacing:-.01em;margin:0;display:flex;align-items:center;gap:8px}
 .sec-head h2::before{content:"";width:8px;height:8px;border-radius:3px;background:var(--accent);flex-shrink:0}
 .sec-head p{margin:4px 0 0 16px;color:var(--muted);font-size:13px}
@@ -59,7 +62,7 @@ button{height:40px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 .name-btn small{color:var(--muted);font-weight:500;white-space:nowrap}
 .name-btn.active small{color:#7396e8}
 /* ── profile ── */
-.profile-card{border:1px solid var(--line);border-radius:14px;padding:20px;background:#fbfcfd}
+.profile-card{border:1px solid var(--line);border-radius:14px;padding:20px;background:#fff;box-shadow:0 1px 2px rgba(16,24,40,.04)}
 .profile-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:10px}
 .profile-head h3{font-size:21px;font-weight:800;letter-spacing:-.01em;margin:0}
 .profile-head small{color:var(--muted)}
@@ -133,21 +136,21 @@ button{height:40px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 @media(max-width:720px){.hero{padding:30px 16px 0}.band{padding:28px 16px 36px}.top-inner{padding:0 16px}.brand span{display:none}.figures{flex-direction:column}.toolbar,.common-cards,.person-list{grid-template-columns:1fr}}
 </style></head>
 <body>
-<nav class="top"><div class="top-inner"><div class="brand">과제 참여 현황<span>KIAPI 전략기획본부 · 2026년 6월</span></div><div class="top-tabs"><a href="#sec-quick">개인별 보기</a><a href="#sec-project">과제별 참여자</a><a href="#sec-trip">공통 과제 찾기</a><a href="#sec-people">참여 현황</a><a href="#sec-matrix">매트릭스</a></div></div></nav>
+<nav class="top"><div class="top-inner"><div class="brand">과제 참여 현황<span>KIAPI 전략기획본부 · 2026년 6월</span></div><div class="top-tabs"><a href="#sec-trip">공통 과제 찾기</a><a href="#sec-quick">개인별 보기</a><a href="#sec-project">과제별 참여자</a><a href="#sec-people">참여 현황</a><a href="#sec-matrix">매트릭스</a></div></div></nav>
 <header class="hero"><h1>전략기획본부 6월 과제 참여 현황</h1><p class="lede">개인별 참여 과제를 먼저 확인하고, 출장 신청 시 여러 인원의 공통 과제를 함께 찾을 수 있습니다.</p>
 <div class="figures"><div class="figure"><strong>42</strong><span>전략기획 인원</span><small>퇴사자 제외 기준</small></div><div class="figure"><strong>24</strong><span>참여 과제</span><small>참여율 시트 기준</small></div><div class="figure warn"><strong>2</strong><span>100% 미달</span><small>예준호 · 윤윤기</small></div></div></header>
 <main>
-<section class="band"><div class="band-inner duo-sec">
-<div id="sec-quick"><div class="sec-head"><h2>개인별 과제 바로 보기</h2><p>사람을 선택하면 참여 과제가 표시됩니다.</p></div>
-<div class="sec-body panel"><div class="quick-layout"><div><input id="personSearch" placeholder="이름 검색" style="margin-bottom:10px"><div id="nameList" class="name-list"></div></div><div id="profilePanel" class="profile-card"></div></div></div></div>
-<div id="sec-project"><div class="sec-head"><h2>과제별 참여자 보기</h2><p>과제를 선택하면 참여자와 참여율이 표시됩니다. 검색은 Enter.</p></div>
-<div class="sec-body panel"><div class="quick-layout"><div><input id="projectSearch" placeholder="과제명 검색 후 Enter" style="margin-bottom:10px"><div id="projectList" class="name-list"></div></div><div id="projectPanel" class="profile-card"></div></div></div></div>
-</div></section>
-<section id="sec-trip" class="band alt"><div class="band-inner"><div class="sec-head"><h2>출장 공통 과제 찾기</h2><p>여러 명을 선택하면 전원이 함께 참여하는 과제를 오른쪽에서 바로 찾아 줍니다.</p></div>
+<section id="sec-trip" class="band tint"><div class="band-inner"><div class="sec-head"><h2>출장 공통 과제 찾기</h2><p>여러 명을 선택하면 전원이 함께 참여하는 과제를 오른쪽에서 바로 찾아 줍니다.</p></div>
 <div class="sec-body duo"><div class="panel"><div class="toolbar"><input id="memberSearch" placeholder="이름으로 빠르게 찾기"><button class="ghost" id="sampleBtn">이유정 추가/해제</button><button class="ghost" id="clearBtn">선택 해제</button></div><div id="memberGrid" class="member-grid"></div><div id="selectedStrip" class="selected-strip"></div></div>
 <div class="result-col"><div class="panel"><p class="sub-title">전원 공통 과제 — 출장 신청에 바로 쓸 수 있는 후보</p><div id="commonCards" class="common-cards"></div></div><div class="panel"><p class="sub-title">부분 겹침 — 전원 공통이 없을 때 대안</p><div id="overlapList" class="overlap-list"></div></div></div></div></div></section>
-<section id="sec-people" class="band"><div class="band-inner"><div class="sec-head"><h2>참여 현황 한눈에</h2><p>카드를 클릭하면 출장 선택에 추가/해제됩니다. 과제별 인원·규모는 위의 '과제별 참여자 보기'에서 확인하세요.</p></div>
-<div class="sec-body panel"><div id="personList" class="person-list"></div></div></div></section>
+<section class="band alt"><div class="band-inner duo-sec">
+<div id="sec-quick"><div class="sec-head"><h2>개인별 과제 바로 보기</h2><p>사람을 선택하면 참여 과제가 표시됩니다.</p></div>
+<div class="sec-body quick-layout"><div class="list-col"><input id="personSearch" placeholder="이름 검색" style="margin-bottom:10px"><div id="nameList" class="name-list"></div></div><div id="profilePanel" class="profile-card"></div></div></div>
+<div id="sec-project"><div class="sec-head"><h2>과제별 참여자 보기</h2><p>과제를 선택하면 참여자와 참여율이 표시됩니다. 검색은 Enter.</p></div>
+<div class="sec-body quick-layout"><div class="list-col"><input id="projectSearch" placeholder="과제명 검색 후 Enter" style="margin-bottom:10px"><div id="projectList" class="name-list"></div></div><div id="projectPanel" class="profile-card"></div></div></div>
+</div></section>
+<section id="sec-people" class="band gray"><div class="band-inner"><div class="sec-head"><h2>참여 현황 한눈에</h2><p>카드를 클릭하면 출장 선택에 추가/해제됩니다. 과제별 인원·규모는 위의 '과제별 참여자 보기'에서 확인하세요.</p></div>
+<div class="sec-body"><div id="personList" class="person-list"></div></div></div></section>
 <section id="sec-matrix" class="band alt"><div class="band-inner"><div class="sec-head"><h2>참여율 매트릭스</h2><p>선택 인원은 표에서 강조됩니다. 셀에 마우스를 올리면 행·열이 함께 강조됩니다.</p></div>
 <div class="sec-body panel matrix"><div id="matrixWrap"></div></div>
 <div class="note">원본: 참여율 시트 - 인건비관리(26년) v5.5 기준 (6월) · 3책5공(국가연구개발혁신법 시행령 제64조): 동시수행 5과제·연구책임자 3과제 이내 — 책임자는 연구비 대시보드(kiapirnd) 과제목록 기준, 주관과제 책임자만 3책 산정(공동기관 책임자 미포함), 잔여기간 4개월 미만 등 제외과제는 반영하지 않은 단순 집계</div></div></section>
