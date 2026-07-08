@@ -1,17 +1,20 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>전략기획 과제 참여 현황 (6월)</title><link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable.min.css"><style>
-:root{--bg:#f7f8fa;--card:#fff;--ink:#111827;--soft:#4b5563;--muted:#8a919c;--line:#e8ebef;--accent:#1d4ed8;--accent-soft:#eef4ff;--amber:#9a5b00;--red:#dc2626}
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>전략기획 과제 참여 현황 (6월)</title><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Crect width='22' height='22' rx='6' fill='%231d4ed8'/%3E%3Crect x='5' y='5' width='5' height='5' rx='1.5' fill='%23fff'/%3E%3Crect x='12' y='5' width='5' height='5' rx='1.5' fill='%2399b9f7'/%3E%3Crect x='5' y='12' width='5' height='5' rx='1.5' fill='%2399b9f7'/%3E%3Crect x='12' y='12' width='5' height='5' rx='1.5' fill='%23fff'/%3E%3C/svg%3E"><link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable.min.css"><style>
+:root{--bg:#f7f8fa;--card:#fff;--ink:#111827;--soft:#4b5563;--muted:#8a919c;--line:#e2e6ec;--accent:#1d4ed8;--accent-soft:#eef4ff;--amber:#9a5b00;--red:#dc2626;color-scheme:light}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:linear-gradient(180deg,#e7eefc 0,#eef1f7 260px,var(--bg) 460px);color:var(--ink);font-family:'Pretendard',"Noto Sans KR","Segoe UI",Arial,sans-serif;font-size:14px;-webkit-font-smoothing:antialiased}
 /* ── top bar ── */
 .top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top-inner{max-width:1440px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:52px;gap:16px}
-.brand{font-size:14px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;display:flex;align-items:center;gap:8px}
-.brand::before{content:"";width:9px;height:9px;border-radius:3px;background:var(--accent);flex-shrink:0}
+.brand{font-size:14px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;display:flex;align-items:center;gap:9px}
+.brand svg{flex-shrink:0;display:block}
+.top-right{display:flex;align-items:center;gap:10px;min-width:0}
+.theme-btn{width:34px;height:34px;padding:0;border-radius:9px;background:transparent;border:1px solid var(--line);font-size:15px;line-height:1;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center}
+.theme-btn:hover{border-color:var(--accent)}
 .brand span{color:var(--muted);font-weight:500;margin-left:8px;font-size:12.5px}
 .top-tabs{display:flex;gap:2px;overflow-x:auto}
-.top-tabs a{padding:7px 11px;font-size:12.5px;font-weight:600;color:#6b7280;text-decoration:none;white-space:nowrap;border-radius:8px;transition:.15s}
+.top-tabs a{padding:7px 11px;font-size:12.5px;font-weight:600;color:var(--muted);text-decoration:none;white-space:nowrap;border-radius:8px;transition:.15s}
 .top-tabs a:hover{color:var(--ink);background:#f1f3f6}
 [id^=sec-]{scroll-margin-top:66px}
 /* ── hero ── */
@@ -20,7 +23,7 @@ body{margin:0;background:linear-gradient(180deg,#e7eefc 0,#eef1f7 260px,var(--bg
 h1{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 6px}
 .lede{margin:0;color:var(--muted);font-size:14px;line-height:1.7}
 .figures{display:flex;gap:12px}
-.figure{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 22px;min-width:172px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.figure{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 22px;min-width:172px}
 .figure strong{display:block;font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
 .figure.warn strong{color:var(--amber)}
 .figure span{display:flex;align-items:center;gap:6px;margin-top:5px;font-size:12.5px;font-weight:600;color:var(--soft)}
@@ -40,7 +43,7 @@ main{padding-top:14px}
 .sec-head h2::before{content:"";width:8px;height:8px;border-radius:3px;background:var(--accent);flex-shrink:0}
 .sec-head p{margin:4px 0 0 16px;color:var(--muted);font-size:13px}
 .sec-body{margin-top:14px}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
 .duo-sec{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .quick-layout{display:grid;grid-template-columns:220px 1fr;gap:18px}
@@ -57,25 +60,25 @@ button{height:40px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 .toolbar{display:grid;grid-template-columns:1fr auto auto;gap:8px;margin-bottom:14px}
 /* ── name / project list ── */
 .name-list{display:grid;gap:2px;max-height:350px;overflow:auto}
-.name-btn{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;height:auto;background:none;border:0;border-radius:9px;padding:9px 11px;text-align:left;font-weight:600;color:var(--soft);transition:.12s}
+.name-btn{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;height:auto;background:none;border:0;border-radius:9px;padding:9px 11px;text-align:left;font-weight:600;color:var(--soft);transition:.12s;cursor:pointer}
 .name-btn:hover{background:#f4f6f8;color:var(--ink)}
 .name-btn.active{background:var(--accent-soft);color:var(--accent)}
 .name-btn small{color:var(--muted);font-weight:500;white-space:nowrap}
 .name-btn.active small{color:#7396e8}
 /* ── profile ── */
-.profile-card{border:1px solid var(--line);border-radius:14px;padding:20px;background:#fff;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.profile-card{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--card)}
 .profile-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:10px}
 .profile-head h3{font-size:21px;font-weight:800;letter-spacing:-.01em;margin:0}
 .profile-head small{color:var(--muted)}
 .profile-total{font-size:28px;font-weight:800;letter-spacing:-.02em;color:var(--accent);line-height:1.1}
 .project-chips,.project-tags{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px}
-.project-chip{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;font-weight:700;font-size:13px}
+.project-chip{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:10px 12px;font-weight:700;font-size:13px}
 .project-chip small{display:block;color:var(--muted);font-weight:500;margin-top:3px}
 .meter{height:6px;background:#eef1f4;border-radius:999px;overflow:hidden;margin:12px 0}
 .meter i{display:block;height:100%;background:var(--accent);border-radius:999px}
 /* ── member picker ── */
 .member-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;padding:2px}
-.member{display:inline-flex;align-items:center;justify-content:center;gap:5px;border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 6px;font-size:13px;font-weight:600;color:var(--soft);cursor:pointer;transition:.15s;user-select:none}
+.member{display:inline-flex;align-items:center;justify-content:center;gap:5px;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:10px 6px;font-size:13px;font-weight:600;color:var(--soft);cursor:pointer;transition:.15s;user-select:none}
 .member:hover{border-color:#c9d1da}
 .member:has(input:checked){border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
 .member:has(input:checked)::before{content:"✓";font-size:10px;font-weight:800}
@@ -95,12 +98,12 @@ button{height:40px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 .common-card span{display:block;color:#64708a;font-size:12px;line-height:1.6}
 .empty{border:1px dashed #dde2e8;background:#fafbfc;border-radius:12px;padding:16px;color:var(--muted);text-align:left;font-size:13px}
 .overlap-list{display:grid;gap:6px}
-.overlap-item{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:11px;padding:10px 13px;background:#fff}
+.overlap-item{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:11px;padding:10px 13px;background:var(--card)}
 .overlap-item b{font-weight:700}
 .overlap-item small{display:block;color:var(--muted);margin-top:2px;line-height:1.5}
 /* ── person cards ── */
 .person-list{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.person-card{border:1px solid var(--line);border-radius:13px;padding:14px;background:#fff;cursor:pointer;transition:.15s}
+.person-card{border:1px solid var(--line);border-radius:13px;padding:14px;background:var(--card);cursor:pointer;transition:.15s}
 .person-card:hover{border-color:#c9d1da}
 .person-card.selected{border-color:#a7c0f2;outline:3px solid rgba(29,78,216,.1);background:#fdfeff}
 .person-card h3{font-size:15px;font-weight:800;margin:0 0 2px}
@@ -125,20 +128,75 @@ button{height:40px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 .matrix td.colhi{background:#eff4ff!important}
 .matrix th.colhi{background:#e3e9f3}
 .pct{display:inline-flex;min-width:42px;height:24px;align-items:center;justify-content:center;border-radius:999px;font-weight:700;font-size:12px}
-.note{text-align:right;color:#9aa1ab;font-size:11.5px;line-height:1.7;margin-top:12px}
+.note{text-align:right;color:var(--muted);font-size:11.5px;line-height:1.7;margin-top:12px}
 /* ── badges ── */
 .rule-badge{display:inline-flex;gap:6px;align-items:center;background:#f4f6f8;border:1px solid #e8ebef;color:#6b7280;border-radius:999px;padding:3px 5px 3px 10px;font-size:11px;font-weight:600;cursor:help;white-space:nowrap}
 .rule-badge .rb{display:inline-flex;align-items:center;border-radius:999px;padding:1px 7px;font-weight:800;background:#e6e9ed;color:#4b5563}
 .rule-badge .rb.warn{background:#f6ead2;color:#9a5b00}
 .rule-badge .rb.bad{background:#fde3e3;color:#b91c1c}
-.lead-tag{display:inline-block;margin-left:6px;font-style:normal;font-size:10px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:1px 6px;vertical-align:1px}
+.lead-tag{display:inline-block;margin-left:6px;font-style:normal;font-size:11px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:2px 8px;vertical-align:1px}
 .lead-tag.co{color:#6b7280;background:#f1f3f6}
 /* ── responsive ── */
+/* ── pct scale ── */
+.pct.p10{background:#f1f3f6;color:#6b7280}.pct.p20{background:#e3edff;color:#1a44bd}.pct.p30{background:#b9d0fa;color:#12306e}.pct.p40{background:#1d4ed8;color:#fff}
+.tag-pct.t10{color:#8a919c}.tag-pct.t20{color:#1d4ed8}.tag-pct.t30{color:#1a44bd}.tag-pct.t40{color:#12306e}
+/* ── dark theme ── */
+[data-theme=dark]{--bg:#0f1218;--card:#171b23;--ink:#e7eaf1;--soft:#b4bac7;--muted:#7e8697;--line:#272d39;--accent:#5b8bf5;--accent-soft:#1c2941;--amber:#d9a94e;--red:#f07070;color-scheme:dark}
+[data-theme=dark] body{background:linear-gradient(180deg,#131a2c 0,#111521 260px,var(--bg) 460px)}
+[data-theme=dark] ::selection{background:#28407a}
+[data-theme=dark] .top{background:rgba(15,18,24,.85)}
+[data-theme=dark] .top-tabs a:hover{background:#1e242f;color:var(--ink)}
+[data-theme=dark] .band.alt{background:#131721}
+[data-theme=dark] .band.tint{background:#141c2f;border-top-color:#223354}
+[data-theme=dark] .band.gray{background:#111521}
+[data-theme=dark] .list-col{background:#1b202b}
+[data-theme=dark] input{background:#12161e}
+[data-theme=dark] input::placeholder{color:#5a6375}
+[data-theme=dark] input:focus{outline-color:rgba(91,139,245,.25);border-color:#3b5aa6}
+[data-theme=dark] .ghost{background:#1e242f;color:#b4bac7}
+[data-theme=dark] .ghost:hover{background:#272d39;color:var(--ink)}
+[data-theme=dark] .name-btn:hover{background:#1e242f}
+[data-theme=dark] .name-btn.active small{color:#7ea3f7}
+[data-theme=dark] .member:hover{border-color:#3a4252}
+[data-theme=dark] .meter{background:#272d39}
+[data-theme=dark] .chip.warn{background:#332711}
+[data-theme=dark] .chip.muted{background:#1e242f;color:#aab1bf;border-color:#272d39}
+[data-theme=dark] .common-card{background:#16203a;border-color:#26395f}
+[data-theme=dark] .common-card b{color:#9db9f5}
+[data-theme=dark] .common-card span{color:#7e8697}
+[data-theme=dark] .empty{background:#13161d;border-color:#2b3140}
+[data-theme=dark] .person-card:hover{border-color:#3a4252}
+[data-theme=dark] .person-card.selected{background:#151b29;border-color:#3b5aa6}
+[data-theme=dark] .matrix th,[data-theme=dark] .matrix td{border-color:#232936}
+[data-theme=dark] .matrix th{background:#1b202b}
+[data-theme=dark] .matrix td:first-child{background:var(--card)}
+[data-theme=dark] .matrix th:first-child{background:#1b202b}
+[data-theme=dark] .matrix thead th:not(:first-child){border-bottom-color:#39414f}
+[data-theme=dark] .matrix tbody tr:nth-child(even) td{background:#141821}
+[data-theme=dark] .matrix tbody tr:nth-child(even) td:first-child{background:#181d27}
+[data-theme=dark] .matrix tbody tr:hover td{background:#1b2438!important}
+[data-theme=dark] .matrix .selected-row td{background:#1f2c4a!important}
+[data-theme=dark] .matrix .selected-row td:first-child{background:#28407a!important}
+[data-theme=dark] .matrix td.colhi{background:#1b2438!important}
+[data-theme=dark] .matrix th.colhi{background:#232d44}
+[data-theme=dark] .pct.p10{background:#1e242f;color:#8a919c}
+[data-theme=dark] .pct.p20{background:#1d2f52;color:#8fb0f5}
+[data-theme=dark] .pct.p30{background:#2b4884;color:#cdddff}
+[data-theme=dark] .pct.p40{background:#3f6de0;color:#fff}
+[data-theme=dark] .tag-pct.t10{color:#7e8697}
+[data-theme=dark] .tag-pct.t20{color:#7ea3f7}
+[data-theme=dark] .tag-pct.t30{color:#9db9f5}
+[data-theme=dark] .tag-pct.t40{color:#c4d6fa}
+[data-theme=dark] .rule-badge{background:#1e242f;border-color:#272d39;color:#9aa2b1}
+[data-theme=dark] .rule-badge .rb{background:#272d39;color:#b4bac7}
+[data-theme=dark] .rule-badge .rb.warn{background:#332711;color:#d9a94e}
+[data-theme=dark] .rule-badge .rb.bad{background:#3a1717;color:#f08a8a}
+[data-theme=dark] .lead-tag.co{background:#1e242f;color:#9aa2b1}
 @media(max-width:1100px){.duo,.duo-sec,.quick-layout,.hero-inner{grid-template-columns:1fr}.person-list{grid-template-columns:repeat(2,1fr)}.figures{flex-wrap:wrap}.figure{flex:1;min-width:150px}}
 @media(max-width:720px){.hero{padding:28px 16px 28px}.band{padding:28px 16px 36px}.top-inner{padding:0 16px}.brand span{display:none}.figures{flex-direction:column}.toolbar,.common-cards,.person-list{grid-template-columns:1fr}}
 </style></head>
 <body>
-<nav class="top"><div class="top-inner"><div class="brand">과제 참여 현황<span>KIAPI 전략기획본부 · 2026년 6월</span></div><div class="top-tabs"><a href="#sec-trip">공통 과제 찾기</a><a href="#sec-quick">개인별 보기</a><a href="#sec-project">과제별 참여자</a><a href="#sec-people">참여 현황</a><a href="#sec-matrix">매트릭스</a></div></div></nav>
+<nav class="top"><div class="top-inner"><div class="brand"><svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="6" fill="#1d4ed8"/><rect x="5" y="5" width="5" height="5" rx="1.5" fill="#fff"/><rect x="12" y="5" width="5" height="5" rx="1.5" fill="#99b9f7"/><rect x="5" y="12" width="5" height="5" rx="1.5" fill="#99b9f7"/><rect x="12" y="12" width="5" height="5" rx="1.5" fill="#fff"/></svg>과제 참여 현황<span>KIAPI 전략기획본부 · 2026년 6월</span></div><div class="top-right"><div class="top-tabs"><a href="#sec-trip">공통 과제 찾기</a><a href="#sec-quick">개인별 보기</a><a href="#sec-project">과제별 참여자</a><a href="#sec-people">참여 현황</a><a href="#sec-matrix">매트릭스</a></div><button id="themeBtn" class="theme-btn" title="다크모드 전환">🌙</button></div></div></nav>
 <header class="hero"><div class="hero-inner"><div><h1>전략기획본부 6월 과제 참여 현황</h1><p class="lede">개인별 참여 과제를 먼저 확인하고, 출장 신청 시 여러 인원의 공통 과제를 함께 찾을 수 있습니다.</p></div>
 <div class="figures"><div class="figure"><strong>42</strong><span>전략기획 인원</span><small>퇴사자 제외 기준</small></div><div class="figure"><strong>24</strong><span>참여 과제</span><small>참여율 시트 기준</small></div><div class="figure warn"><strong>2</strong><span>100% 미달</span><small>예준호 · 윤윤기</small></div></div></div></header>
 <main>
@@ -168,8 +226,8 @@ let focusedProject=projectNames[0];
 let projQuery='';
 const $=id=>document.getElementById(id);
 function fmt(v){return Number(v).toFixed(Number(v)%1===0?0:1)+'%'}
-function pctTextColor(v){if(v>=40)return'#12306e';if(v>=30)return'#1a44bd';if(v>=20)return'#1d4ed8';return'#8a919c';}
-function pctColor(v){if(v>=40)return 'background:#1d4ed8;color:#fff';if(v>=30)return 'background:#b9d0fa;color:#12306e';if(v>=20)return 'background:#e3edff;color:#1a44bd';if(v>0)return 'background:#f1f3f6;color:#6b7280';return '';}
+function pctClass(v){return v>=40?'p40':v>=30?'p30':v>=20?'p20':'p10'}
+function pctTextClass(v){return v>=40?'t40':v>=30?'t30':v>=20?'t20':'t10'}
 function projectPct(person,name){const hit=person.projects.find(p=>p.name===name);return hit?hit.pct:0}
 function selectedPeople(){return PEOPLE.filter(p=>selected.has(p.name))}
 function togglePerson(name){selected.has(name)?selected.delete(name):selected.add(name);renderAll()}
@@ -181,13 +239,18 @@ function renderQuick(){const q=$('personSearch').value.trim();const visible=PEOP
 function renderMembers(){const q=$('memberSearch').value.trim();$('memberGrid').innerHTML=PEOPLE.map(p=>'<label class="member '+(q&&!p.name.includes(q)?'hidden':'')+'" title="'+p.role+'"><input type="checkbox" value="'+p.name+'" '+(selected.has(p.name)?'checked':'')+'><span>'+p.name+'</span></label>').join('');document.querySelectorAll('#memberGrid input').forEach(box=>box.addEventListener('change',()=>togglePerson(box.value)))}
 function renderSelected(){const arr=selectedPeople();$('selectedStrip').innerHTML=arr.length?arr.map(p=>'<span class="chip"><b>'+p.name+'</b> '+p.projects.length+'개</span>').join(''):'<span class="chip muted">선택된 인원이 없습니다</span>'}
 function renderCommon(){const arr=selectedPeople();if(arr.length<2){$('commonCards').innerHTML='<div class="empty">2명 이상 선택하면 공통 과제가 표시됩니다.</div>';$('overlapList').innerHTML='<div class="empty">선택 인원이 부족합니다.</div>';return}const common=projectNames.filter(name=>arr.every(p=>projectPct(p,name)>0));$('commonCards').innerHTML=common.length?common.map(name=>'<div class="common-card"><b>'+name+'</b><span>'+arr.map(p=>p.name+' '+fmt(projectPct(p,name))).join(' / ')+'</span></div>').join(''):'<div class="empty">선택 인원 전원이 함께 참여하는 과제는 없습니다.</div>';const overlap=projectNames.map(name=>{const members=arr.filter(p=>projectPct(p,name)>0);return {name,members}}).filter(x=>x.members.length>0&&x.members.length<arr.length).sort((a,b)=>b.members.length-a.members.length||a.name.localeCompare(b.name)).slice(0,8);$('overlapList').innerHTML=overlap.length?overlap.map(x=>'<div class="overlap-item"><div><b>'+x.name+'</b><small>'+x.members.map(p=>p.name).join(', ')+'</small></div><span class="chip warn">'+x.members.length+'/'+arr.length+'명</span></div>').join(''):'<div class="empty">부분 겹침도 없습니다.</div>'}
-function renderPeople(){$('personList').innerHTML=PEOPLE.map(p=>'<div class="person-card '+(p.total<100?'low ':'')+(selected.has(p.name)?'selected':'')+'" data-name="'+p.name+'"><h3>'+p.name+'</h3><small>'+p.role+' · '+p.projects.length+'개 과제</small><div style="margin-top:5px">'+ruleBadge(p)+'</div><div class="meter"><i style="width:'+Math.min(p.total,100)+'%"></i></div><strong>'+fmt(p.total)+'</strong><div class="project-tags">'+p.projects.map(x=>'<span class="chip muted"><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+x.name+'</span>'+('<b style="color:'+pctTextColor(x.pct)+';white-space:nowrap;flex-shrink:0">')+fmt(x.pct)+'</b></span>').join('')+'</div></div>').join('');document.querySelectorAll('.person-card').forEach(card=>card.addEventListener('click',()=>{focusedName=card.dataset.name;togglePerson(card.dataset.name)}))}
-function renderMatrix(){const headers=projectNames.map(p=>'<th title="'+p+'">'+p+'</th>').join('');const rows=PEOPLE.map(person=>'<tr class="'+(selected.has(person.name)?'selected-row':'')+'"><td><b>'+person.name+'</b><br><small>'+person.role+'</small></td>'+projectNames.map(name=>{const v=projectPct(person,name);return '<td>'+(v?'<span class="pct" style="'+pctColor(v)+'">'+fmt(v)+'</span>':'')+'</td>'}).join('')+'</tr>').join('');$('matrixWrap').innerHTML='<table><thead><tr><th>성명</th>'+headers+'</tr></thead><tbody>'+rows+'</tbody></table>'}
+function renderPeople(){$('personList').innerHTML=PEOPLE.map(p=>'<div class="person-card '+(p.total<100?'low ':'')+(selected.has(p.name)?'selected':'')+'" data-name="'+p.name+'"><h3>'+p.name+'</h3><small>'+p.role+' · '+p.projects.length+'개 과제</small><div style="margin-top:5px">'+ruleBadge(p)+'</div><div class="meter"><i style="width:'+Math.min(p.total,100)+'%"></i></div><strong>'+fmt(p.total)+'</strong><div class="project-tags">'+p.projects.map(x=>'<span class="chip muted"><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+x.name+'</span>'+('<b class="tag-pct '+pctTextClass(x.pct)+'" style="white-space:nowrap;flex-shrink:0">')+fmt(x.pct)+'</b></span>').join('')+'</div></div>').join('');document.querySelectorAll('.person-card').forEach(card=>card.addEventListener('click',()=>{focusedName=card.dataset.name;togglePerson(card.dataset.name)}))}
+function renderMatrix(){const headers=projectNames.map(p=>'<th title="'+p+'">'+p+'</th>').join('');const rows=PEOPLE.map(person=>'<tr class="'+(selected.has(person.name)?'selected-row':'')+'"><td><b>'+person.name+'</b><br><small>'+person.role+'</small></td>'+projectNames.map(name=>{const v=projectPct(person,name);return '<td>'+(v?'<span class="pct '+pctClass(v)+'">'+fmt(v)+'</span>':'')+'</td>'}).join('')+'</tr>').join('');$('matrixWrap').innerHTML='<table><thead><tr><th>성명</th>'+headers+'</tr></thead><tbody>'+rows+'</tbody></table>'}
 function renderAll(){renderQuick();renderMembers();renderSelected();renderCommon();renderPeople();renderMatrix();renderProjectView()}
 $('personSearch').addEventListener('input',renderQuick);$('memberSearch').addEventListener('input',renderMembers);$('sampleBtn').addEventListener('click',()=>{selected.has('이유정')?selected.delete('이유정'):selected.add('이유정');focusedName='이유정';renderAll()});$('clearBtn').addEventListener('click',()=>{selected.clear();renderAll()});$('projectSearch').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing){projQuery=$('projectSearch').value.trim();renderProjectView()}});window.focusPerson=focusPerson;window.togglePerson=togglePerson;window.focusProject=focusProject;
 const mwrap=$('matrixWrap');
 function setCol(i,on){mwrap.querySelectorAll('tr').forEach(tr=>{const c=tr.cells[i];if(c)c.classList.toggle('colhi',on)})}
 mwrap.addEventListener('mouseover',e=>{const cell=e.target.closest('td,th');if(cell&&cell.cellIndex>0)setCol(cell.cellIndex,true)});
 mwrap.addEventListener('mouseout',e=>{const cell=e.target.closest('td,th');if(cell&&cell.cellIndex>0)setCol(cell.cellIndex,false)});
+const themeBtn=$('themeBtn');
+function applyTheme(t){document.documentElement.dataset.theme=t;themeBtn.textContent=t==='dark'?'☀️':'🌙';themeBtn.title=t==='dark'?'라이트모드 전환':'다크모드 전환';try{localStorage.setItem('trip-theme',t)}catch(e){}}
+let savedTheme='light';try{savedTheme=localStorage.getItem('trip-theme')||'light'}catch(e){}
+applyTheme(savedTheme);
+themeBtn.addEventListener('click',()=>applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
 renderAll();
 </script></body></html>
