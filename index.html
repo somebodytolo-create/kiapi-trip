@@ -87,7 +87,8 @@ button{height:40px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 .chip.muted{background:#f4f6f8;color:var(--soft);border-radius:8px;padding:5px 9px;font-size:11px;display:flex;justify-content:space-between;align-items:center;gap:6px}
 /* ── results ── */
 .result-col{display:grid;gap:14px}
-.sub-title{font-size:12px;font-weight:700;color:var(--muted);margin:0 0 12px}
+.sub-title{font-size:14.5px;font-weight:800;color:var(--ink);margin:0 0 12px;letter-spacing:-.01em}
+.sub-title small{font-size:12.5px;font-weight:500;color:var(--muted);margin-left:2px}
 .common-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 .common-card{border:1px solid #d8e4fb;background:#f8faff;border-radius:12px;padding:14px 16px}
 .common-card b{display:block;font-size:15px;font-weight:800;color:#173a9e;margin-bottom:6px}
@@ -143,7 +144,7 @@ button{height:40px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 <main>
 <section id="sec-trip" class="band tint"><div class="band-inner"><div class="sec-head"><h2>출장 공통 과제 찾기</h2><p>여러 명을 선택하면 전원이 함께 참여하는 과제를 오른쪽에서 바로 찾아 줍니다.</p></div>
 <div class="sec-body duo"><div class="panel"><div class="toolbar"><input id="memberSearch" placeholder="이름으로 빠르게 찾기"><button class="ghost" id="sampleBtn">이유정 추가/해제</button><button class="ghost" id="clearBtn">선택 해제</button></div><div id="memberGrid" class="member-grid"></div><div id="selectedStrip" class="selected-strip"></div></div>
-<div class="result-col"><div class="panel"><p class="sub-title">전원 공통 과제 — 출장 신청에 바로 쓸 수 있는 후보</p><div id="commonCards" class="common-cards"></div></div><div class="panel"><p class="sub-title">부분 겹침 — 전원 공통이 없을 때 대안</p><div id="overlapList" class="overlap-list"></div></div></div></div></div></section>
+<div class="result-col"><div class="panel"><p class="sub-title">전원 공통 과제 <small>— 출장 신청에 바로 쓸 수 있는 후보</small></p><div id="commonCards" class="common-cards"></div></div><div class="panel"><p class="sub-title">부분 겹침 <small>— 전원 공통이 없을 때 대안</small></p><div id="overlapList" class="overlap-list"></div></div></div></div></div></section>
 <section class="band alt"><div class="band-inner duo-sec">
 <div id="sec-quick"><div class="sec-head"><h2>개인별 과제 바로 보기</h2><p>사람을 선택하면 참여 과제가 표시됩니다.</p></div>
 <div class="sec-body quick-layout"><div class="list-col"><input id="personSearch" placeholder="이름 검색" style="margin-bottom:10px"><div id="nameList" class="name-list"></div></div><div id="profilePanel" class="profile-card"></div></div></div>
