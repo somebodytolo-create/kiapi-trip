@@ -57,6 +57,8 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 .primary:hover{background:#1a44bd}
 .ghost{background:#f1f3f6;color:var(--soft)}
 .ghost:hover{background:#e8ebef;color:var(--ink)}
+.soft-accent{background:var(--accent-soft);color:var(--accent);border:1px solid #b9cef7}
+.soft-accent:hover{background:#dfeafd;border-color:var(--accent)}
 .toolbar{display:grid;grid-template-columns:1fr auto auto;gap:8px;margin-bottom:14px}
 /* ── name / project list ── */
 .name-list{display:grid;gap:2px;max-height:350px;overflow:auto}
@@ -157,6 +159,8 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 [data-theme=dark] input:focus{outline-color:rgba(91,139,245,.25);border-color:#3b5aa6}
 [data-theme=dark] .ghost{background:#1e242f;color:#b4bac7}
 [data-theme=dark] .ghost:hover{background:#272d39;color:var(--ink)}
+[data-theme=dark] .soft-accent{border-color:#33507f}
+[data-theme=dark] .soft-accent:hover{background:#24365c;border-color:var(--accent)}
 [data-theme=dark] .name-btn:hover{background:#1e242f}
 [data-theme=dark] .name-btn.active small{color:#7ea3f7}
 [data-theme=dark] .member:hover{border-color:#3a4252}
@@ -203,7 +207,7 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 <div class="figures"><div class="figure"><strong>42</strong><span>전략기획 인원</span><small>퇴사자 제외 기준</small></div><div class="figure"><strong>24</strong><span>참여 과제</span><small>참여율 시트 기준</small></div><div class="figure warn"><strong>2</strong><span>100% 미달</span><small>예준호 · 윤윤기</small></div></div></div></header>
 <main>
 <section id="sec-trip" class="band tint"><div class="band-inner"><div class="sec-head"><h2>출장 공통 과제 찾기</h2><p>여러 명을 선택하면 전원이 함께 참여하는 과제를 오른쪽에서 바로 찾아 줍니다.</p></div>
-<div class="sec-body duo"><div class="panel"><div class="toolbar"><input id="memberSearch" placeholder="이름으로 빠르게 찾기"><button class="ghost" id="sampleBtn">이유정 추가/해제</button><button class="ghost" id="clearBtn">선택 해제</button></div><div id="memberGrid" class="member-grid"></div><div id="selectedStrip" class="selected-strip"></div></div>
+<div class="sec-body duo"><div class="panel"><div class="toolbar"><input id="memberSearch" placeholder="이름으로 빠르게 찾기"><button class="soft-accent" id="sampleBtn">이유정 추가/해제</button><button class="ghost" id="clearBtn">선택 해제</button></div><div id="memberGrid" class="member-grid"></div><div id="selectedStrip" class="selected-strip"></div></div>
 <div class="result-col"><div class="panel"><p class="sub-title">전원 공통 과제 <small>— 출장 신청에 바로 쓸 수 있는 후보</small></p><div id="commonCards" class="common-cards"></div></div><div class="panel"><p class="sub-title">부분 겹침 <small>— 전원 공통이 없을 때 대안</small></p><div id="overlapList" class="overlap-list"></div></div></div></div></div></section>
 <section class="band alt"><div class="band-inner duo-sec">
 <div id="sec-quick"><div class="sec-head"><h2>개인별 과제 바로 보기</h2><p>사람을 선택하면 참여 과제가 표시됩니다.</p></div>
