@@ -63,8 +63,8 @@ button{height:40px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 .meter{height:6px;background:#eef1f4;border-radius:999px;overflow:hidden;margin:12px 0}
 .meter i{display:block;height:100%;background:var(--accent);border-radius:999px}
 /* ── member picker ── */
-.member-grid{display:flex;flex-wrap:wrap;gap:5px;max-height:250px;overflow:auto;padding:2px}
-.member{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:600;color:var(--soft);cursor:pointer;transition:.15s;user-select:none}
+.member-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(74px,1fr));gap:5px;max-height:250px;overflow:auto;padding:2px}
+.member{display:inline-flex;align-items:center;justify-content:center;gap:4px;border:1px solid var(--line);background:#fff;border-radius:9px;padding:6px 4px;font-size:12px;font-weight:600;color:var(--soft);cursor:pointer;transition:.15s;user-select:none}
 .member:hover{border-color:#c9d1da}
 .member:has(input:checked){border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
 .member:has(input:checked)::before{content:"✓";font-size:10px;font-weight:800}
@@ -120,8 +120,10 @@ button{height:40px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 .pct{display:inline-flex;min-width:42px;height:24px;align-items:center;justify-content:center;border-radius:999px;font-weight:700;font-size:12px}
 .note{text-align:right;color:#9aa1ab;font-size:11.5px;line-height:1.7;margin-top:12px}
 /* ── badges ── */
-.rule-badge{display:inline-flex;gap:5px;align-items:center;background:#f4f6f8;border:1px solid #e8ebef;color:#6b7280;border-radius:999px;padding:3px 10px;font-size:11px;font-weight:600;cursor:help;white-space:nowrap}
-.rule-badge b{font-weight:800}
+.rule-badge{display:inline-flex;gap:6px;align-items:center;background:#f4f6f8;border:1px solid #e8ebef;color:#6b7280;border-radius:999px;padding:3px 5px 3px 10px;font-size:11px;font-weight:600;cursor:help;white-space:nowrap}
+.rule-badge .rb{display:inline-flex;align-items:center;border-radius:999px;padding:1px 7px;font-weight:800;background:#e6e9ed;color:#4b5563}
+.rule-badge .rb.warn{background:#f6ead2;color:#9a5b00}
+.rule-badge .rb.bad{background:#fde3e3;color:#b91c1c}
 .lead-tag{display:inline-block;margin-left:6px;font-style:normal;font-size:10px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:1px 6px;vertical-align:1px}
 .lead-tag.co{color:#6b7280;background:#f1f3f6}
 /* ── responsive ── */
@@ -152,7 +154,7 @@ const PEOPLE=[{"name":"강성은","role":"팀장","total":100.0,"projects":[{"na
 const projectNames=[...new Set(PEOPLE.flatMap(p=>p.projects.map(x=>x.name)))];
 const PROJECT_PI={"(과)원격지원":{pi:"김봉섭",lead:1},"(산)SDV보안평가센터":{pi:"김봉섭",lead:1},"(산)기능재구성":{pi:"윤윤기",lead:1},"(과)3Tier통합검증":{pi:"윤경수",lead:1},"(산)제조AI":{pi:"김봉섭",lead:1},"(산)혼합현실":{pi:"양은주",lead:0},"(산)시험표준":{pi:"양은주",lead:0},"(산)T-CAR":{pi:"윤경수",lead:0},"(국)전기차안전성":{pi:"윤윤기",lead:0},"(경)사고재현":{pi:"김태형",lead:0},"(과)강화학습":{pi:"김봉섭",lead:0},"(경)운전능력평가":{pi:"윤윤기",lead:0},"(산)구동모터모듈":{pi:"조봉균",lead:0},"(산)초안전플랫폼":{pi:"김태형",lead:0},"(산)AAM인버터":{pi:"조봉균",lead:0},"(산)AAM통합평가":{pi:"조봉균",lead:0},"(산)인력양성27":{pi:"윤경수",lead:0},"(산)기능조합":{pi:"윤형석",lead:0},"(국)EV컨버전":{pi:"윤윤기",lead:0},"(산)합성데이터":{pi:"허준호",lead:0},"(산)인포테인먼트":{pi:"서우창",lead:0},"(산)고성능플랫폼":{pi:"윤경수",lead:0},"(산)SBOM":{pi:"김봉섭",lead:0},"(산)휴머노이드안전":{pi:"윤윤기",lead:0}};
 function ruleInfo(p){const lead=[],co=[];for(const[n,v]of Object.entries(PROJECT_PI))if(v.pi===p.name)(v.lead?lead:co).push(n);return{lead,co,part:p.projects.length}}
-function ruleBadge(p){const r=ruleInfo(p);const lc=r.lead.length>3?'#dc2626':r.lead.length===3?'#9a5b00':'#6b7280';const pc=r.part>5?'#dc2626':'#6b7280';const tip='3책5공(국가연구개발혁신법 시행령 제64조): 동시수행 5과제, 연구책임자 3과제 이내'+(r.lead.length?' | 책임과제(주관): '+r.lead.join(', '):'')+(r.co.length?' | 공동기관 책임 '+r.co.length+'건('+r.co.join(', ')+') — 3책 미포함':'')+' | 잔여기간 4개월 미만 등 제외과제 미반영 단순 집계';return '<span class="rule-badge" title="'+tip+'">3책/5공 <b style="color:'+lc+'">'+r.lead.length+'</b>/<b style="color:'+pc+'">'+r.part+'</b></span>'}
+function ruleBadge(p){const r=ruleInfo(p);const state=(r.lead.length>3||r.part>5)?' bad':r.lead.length===3?' warn':'';const tip='3책5공(국가연구개발혁신법 시행령 제64조): 동시수행 5과제, 연구책임자 3과제 이내'+(r.lead.length?' | 책임과제(주관): '+r.lead.join(', '):'')+(r.co.length?' | 공동기관 책임 '+r.co.length+'건('+r.co.join(', ')+') — 3책 미포함':'')+' | 잔여기간 4개월 미만 등 제외과제 미반영 단순 집계';return '<span class="rule-badge" title="'+tip+'">3책/5공 <span class="rb'+state+'">'+r.lead.length+'/'+r.part+'</span></span>'}
 const selected=new Set(['이유정']);
 let focusedName='이유정';
 let focusedProject=projectNames[0];
