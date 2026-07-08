@@ -15,10 +15,11 @@ body{margin:0;background:linear-gradient(180deg,#e7eefc 0,#eef1f7 260px,var(--bg
 .top-tabs a:hover{color:var(--ink);background:#f1f3f6}
 [id^=sec-]{scroll-margin-top:66px}
 /* ── hero ── */
-.hero{max-width:1440px;margin:0 auto;padding:44px 28px 0}
+.hero{padding:40px 28px 36px}
+.hero-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
 h1{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 6px}
 .lede{margin:0;color:var(--muted);font-size:14px;line-height:1.7}
-.figures{display:flex;gap:12px;margin-top:22px}
+.figures{display:flex;gap:12px}
 .figure{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 22px;min-width:172px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
 .figure strong{display:block;font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
 .figure.warn strong{color:var(--amber)}
@@ -132,13 +133,13 @@ button{height:40px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 .lead-tag{display:inline-block;margin-left:6px;font-style:normal;font-size:10px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:1px 6px;vertical-align:1px}
 .lead-tag.co{color:#6b7280;background:#f1f3f6}
 /* ── responsive ── */
-@media(max-width:1100px){.duo,.duo-sec,.quick-layout{grid-template-columns:1fr}.person-list{grid-template-columns:repeat(2,1fr)}.figures{flex-wrap:wrap}.figure{flex:1;min-width:150px}}
-@media(max-width:720px){.hero{padding:30px 16px 0}.band{padding:28px 16px 36px}.top-inner{padding:0 16px}.brand span{display:none}.figures{flex-direction:column}.toolbar,.common-cards,.person-list{grid-template-columns:1fr}}
+@media(max-width:1100px){.duo,.duo-sec,.quick-layout,.hero-inner{grid-template-columns:1fr}.person-list{grid-template-columns:repeat(2,1fr)}.figures{flex-wrap:wrap}.figure{flex:1;min-width:150px}}
+@media(max-width:720px){.hero{padding:28px 16px 28px}.band{padding:28px 16px 36px}.top-inner{padding:0 16px}.brand span{display:none}.figures{flex-direction:column}.toolbar,.common-cards,.person-list{grid-template-columns:1fr}}
 </style></head>
 <body>
 <nav class="top"><div class="top-inner"><div class="brand">과제 참여 현황<span>KIAPI 전략기획본부 · 2026년 6월</span></div><div class="top-tabs"><a href="#sec-trip">공통 과제 찾기</a><a href="#sec-quick">개인별 보기</a><a href="#sec-project">과제별 참여자</a><a href="#sec-people">참여 현황</a><a href="#sec-matrix">매트릭스</a></div></div></nav>
-<header class="hero"><h1>전략기획본부 6월 과제 참여 현황</h1><p class="lede">개인별 참여 과제를 먼저 확인하고, 출장 신청 시 여러 인원의 공통 과제를 함께 찾을 수 있습니다.</p>
-<div class="figures"><div class="figure"><strong>42</strong><span>전략기획 인원</span><small>퇴사자 제외 기준</small></div><div class="figure"><strong>24</strong><span>참여 과제</span><small>참여율 시트 기준</small></div><div class="figure warn"><strong>2</strong><span>100% 미달</span><small>예준호 · 윤윤기</small></div></div></header>
+<header class="hero"><div class="hero-inner"><div><h1>전략기획본부 6월 과제 참여 현황</h1><p class="lede">개인별 참여 과제를 먼저 확인하고, 출장 신청 시 여러 인원의 공통 과제를 함께 찾을 수 있습니다.</p></div>
+<div class="figures"><div class="figure"><strong>42</strong><span>전략기획 인원</span><small>퇴사자 제외 기준</small></div><div class="figure"><strong>24</strong><span>참여 과제</span><small>참여율 시트 기준</small></div><div class="figure warn"><strong>2</strong><span>100% 미달</span><small>예준호 · 윤윤기</small></div></div></div></header>
 <main>
 <section id="sec-trip" class="band tint"><div class="band-inner"><div class="sec-head"><h2>출장 공통 과제 찾기</h2><p>여러 명을 선택하면 전원이 함께 참여하는 과제를 오른쪽에서 바로 찾아 줍니다.</p></div>
 <div class="sec-body duo"><div class="panel"><div class="toolbar"><input id="memberSearch" placeholder="이름으로 빠르게 찾기"><button class="ghost" id="sampleBtn">이유정 추가/해제</button><button class="ghost" id="clearBtn">선택 해제</button></div><div id="memberGrid" class="member-grid"></div><div id="selectedStrip" class="selected-strip"></div></div>
