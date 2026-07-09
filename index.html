@@ -100,6 +100,13 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 .member:has(input:checked)::before{content:"✓";font-size:10px;font-weight:800}
 .member.hidden{display:none}
 .member input{position:absolute;opacity:0;pointer-events:none;width:0;height:0}
+.team-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.team-btn{height:30px;padding:0 11px;border-radius:999px;font-size:12.5px;font-weight:600;background:var(--card);border:1px solid var(--line);color:var(--soft)}
+.team-btn small{font-size:11px;font-weight:600;color:var(--muted);margin-left:3px;font-variant-numeric:tabular-nums}
+.team-btn:hover{border-color:var(--accent);color:var(--accent)}
+.team-btn.partial{border-color:#b9cef7;color:var(--accent)}
+.team-btn.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.team-btn.active small,.team-btn.partial small{color:#7396e8}
 .selected-strip{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
 .chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 11px;font-size:12.5px;font-weight:600;background:var(--accent-soft);color:var(--accent)}
 .chip.warn{background:#fbf1de;color:var(--amber)}
@@ -168,6 +175,8 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 [data-theme=dark] .name-btn:hover{background:#1e242f}
 [data-theme=dark] .name-btn.active small{color:#7ea3f7}
 [data-theme=dark] .member:hover{border-color:#3a4252}
+[data-theme=dark] .team-btn.partial{border-color:#33507f}
+[data-theme=dark] .team-btn.active small,[data-theme=dark] .team-btn.partial small{color:#7ea3f7}
 [data-theme=dark] .meter{background:#272d39}
 [data-theme=dark] .chip.warn{background:#332711}
 [data-theme=dark] .chip.muted{background:#1e242f;color:#aab1bf;border-color:#272d39}
@@ -204,8 +213,8 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 <header class="hero"><div class="hero-inner"><div><h1>전략기획본부 7월 과제 참여 현황</h1><p class="lede">이름을 클릭하면 개인별 참여 과제 카드가 바로 표시되고, 여러 인원을 선택하면 출장 신청용 공통 과제를 함께 찾을 수 있습니다.</p></div>
 <div class="figures"><div class="figure"><strong>42</strong><span>전략기획 인원</span><small>퇴사자 제외 기준</small></div><div class="figure"><strong>24</strong><span>참여 과제</span><small>참여율 시트 기준</small></div><div class="figure warn"><strong>2</strong><span>100% 미달</span><small>예준호 · 윤윤기</small></div></div></div></header>
 <main>
-<section id="sec-trip" class="band tint"><div class="band-inner"><div class="sec-head"><h2>출장 공통 과제 찾기</h2><p>이름을 클릭하면 아래에 개인 카드가 나란히 표시되고, 여러 명을 선택하면 오른쪽에서 공통 과제를 찾아 줍니다.</p></div>
-<div class="sec-body duo"><div class="panel"><div class="toolbar"><input id="memberSearch" placeholder="이름으로 빠르게 찾기"><button class="soft-accent" id="sampleBtn">이유정 추가/해제</button><button class="ghost" id="clearBtn">선택 해제</button></div><div id="memberGrid" class="member-grid"></div><div id="selectedStrip" class="selected-strip"></div></div>
+<section id="sec-trip" class="band tint"><div class="band-inner"><div class="sec-head"><h2>출장 공통 과제 찾기</h2><p>이름을 클릭하면 아래에 개인 카드가 나란히 표시되고, 여러 명을 선택하면 오른쪽에서 공통 과제를 찾아 줍니다. 팀명을 누르면 팀원 전체가 한 번에 선택/해제됩니다.</p></div>
+<div class="sec-body duo"><div class="panel"><div class="toolbar"><input id="memberSearch" placeholder="이름으로 빠르게 찾기"><button class="soft-accent" id="sampleBtn">이유정 추가/해제</button><button class="ghost" id="clearBtn">선택 해제</button></div><div id="teamRow" class="team-row"></div><div id="memberGrid" class="member-grid"></div><div id="selectedStrip" class="selected-strip"></div></div>
 <div class="result-col"><div class="panel"><p class="sub-title">전원 공통 과제 <small>— 출장 신청에 바로 쓸 수 있는 후보</small></p><div id="commonCards" class="common-cards"></div></div><div class="panel"><p class="sub-title">부분 겹침 <small>— 전원 공통이 없을 때 대안</small></p><div id="overlapList" class="overlap-list"></div></div></div></div>
 <div id="profileStack" class="card-row"></div></div></section>
 <section id="sec-project" class="band alt"><div class="band-inner"><div class="sec-head"><h2>과제별 참여자 보기</h2><p>과제를 선택하면 참여자와 참여율이 표시됩니다. 개인 카드의 과제를 눌러도 이곳으로 연결됩니다. 검색은 Enter.</p></div>
@@ -219,6 +228,16 @@ const projectNames=[...new Set(PEOPLE.flatMap(p=>p.projects.map(x=>x.name)))];
 const PROJECT_PI={"(과)원격지원":{pi:"김봉섭",lead:1},"(산)SDV보안평가센터":{pi:"김봉섭",lead:1},"(산)기능재구성":{pi:"윤윤기",lead:1},"(과)3Tier통합검증":{pi:"윤경수",lead:1},"(산)제조AI":{pi:"김봉섭",lead:1},"(산)혼합현실":{pi:"양은주",lead:0},"(산)시험표준":{pi:"양은주",lead:0},"(산)T-CAR":{pi:"윤경수",lead:0},"(국)전기차안전성":{pi:"윤윤기",lead:0},"(경)사고재현":{pi:"김태형",lead:0},"(과)강화학습":{pi:"김봉섭",lead:0},"(경)운전능력평가":{pi:"윤윤기",lead:0},"(산)구동모터모듈":{pi:"조봉균",lead:0},"(산)초안전플랫폼":{pi:"김태형",lead:0},"(산)AAM인버터":{pi:"조봉균",lead:0},"(산)AAM통합평가":{pi:"조봉균",lead:0},"(산)인력양성27":{pi:"윤경수",lead:0},"(산)기능조합":{pi:"윤형석",lead:0},"(국)EV컨버전":{pi:"윤윤기",lead:0},"(산)합성데이터":{pi:"허준호",lead:0},"(산)인포테인먼트":{pi:"서우창",lead:0},"(산)고성능플랫폼":{pi:"윤경수",lead:0},"(산)SBOM":{pi:"김봉섭",lead:0},"(산)휴머노이드안전":{pi:"윤윤기",lead:0},"(산)피지컬AI":{pi:"윤형석",lead:0}};
 function ruleInfo(p){const lead=[],co=[];for(const[n,v]of Object.entries(PROJECT_PI))if(v.pi===p.name)(v.lead?lead:co).push(n);return{lead,co,part:p.projects.length}}
 function ruleBadge(p){const r=ruleInfo(p);const state=(r.lead.length>3||r.part>5)?' bad':r.lead.length===3?' warn':'';const tip='3책5공(국가연구개발혁신법 시행령 제64조): 동시수행 5과제, 연구책임자 3과제 이내'+(r.lead.length?' | 책임과제(주관): '+r.lead.join(', '):'')+(r.co.length?' | 공동기관 책임 '+r.co.length+'건('+r.co.join(', ')+') — 3책 미포함':'')+' | 잔여기간 4개월 미만 등 제외과제 미반영 단순 집계';return '<span class="rule-badge" title="'+tip+'">3책/5공 <span class="rb'+state+'">'+r.lead.length+'/'+r.part+'</span></span>'}
+const TEAMS=[
+{label:"기획팀",members:["허준호","황수진","류태웅"]},
+{label:"정책팀",members:["이명수","김승철","이경모"]},
+{label:"AI팀",members:["김태형","성재호","김준영","이선호","이병욱","이정현"]},
+{label:"평가팀",members:["이명수","하성민","정경환","황영서","박선엽","김강민","양현덕"]},
+{label:"우리팀",members:["강성은","이유정","김혜지"]},
+{label:"모빌리티팀",members:["한종호","박대훈","조익현","김성영","변재국","김윤지","정한석"]},
+{label:"김천피플",members:["한종호","박대훈","김윤지","정한석"]},
+{label:"디플팀",members:["서우창","서경덕","장인식","예준호","김태민"]},
+{label:"데지팀",members:["윤형석","송인수","우현","김명준","박하영"]}];
 const selected=new Set(['이유정']);
 let focusedProject=projectNames[0];
 let projQuery='';
@@ -228,6 +247,8 @@ function pctClass(v){return v>=40?'p40':v>=30?'p30':v>=20?'p20':'p10'}
 function projectPct(person,name){const hit=person.projects.find(p=>p.name===name);return hit?hit.pct:0}
 function selectedPeople(){return PEOPLE.filter(p=>selected.has(p.name))}
 function togglePerson(name){selected.has(name)?selected.delete(name):selected.add(name);renderAll()}
+function toggleTeam(i){const t=TEAMS[i];const all=t.members.every(n=>selected.has(n));t.members.forEach(n=>all?selected.delete(n):selected.add(n));renderAll()}
+function renderTeams(){$('teamRow').innerHTML=TEAMS.map((t,i)=>{const sel=t.members.filter(n=>selected.has(n)).length;const cls=sel===t.members.length?' active':sel?' partial':'';const cnt=sel&&sel<t.members.length?sel+'/'+t.members.length:t.members.length;return '<button class="team-btn'+cls+'" onclick="toggleTeam('+i+')" title="'+t.members.join(', ')+'">'+t.label+'<small>'+cnt+'</small></button>'}).join('')}
 function focusProject(name){focusedProject=name;renderProjectView()}
 function jumpProject(name){projQuery='';$('projectSearch').value='';focusProject(name);document.getElementById('sec-project').scrollIntoView({behavior:'smooth',block:'nearest'})}
 function projectParticipants(name){return PEOPLE.filter(p=>projectPct(p,name)>0).map(p=>({name:p.name,role:p.role,pct:projectPct(p,name)})).sort((a,b)=>b.pct-a.pct||a.name.localeCompare(b.name))}
@@ -238,8 +259,8 @@ function renderMembers(){const q=$('memberSearch').value.trim();$('memberGrid').
 function renderSelected(){const arr=selectedPeople();$('selectedStrip').innerHTML=arr.length?arr.map(p=>'<span class="chip"><b>'+p.name+'</b> '+p.projects.length+'개</span>').join(''):'<span class="chip muted">선택된 인원이 없습니다</span>'}
 function renderCommon(){const arr=selectedPeople();if(arr.length<2){$('commonCards').innerHTML='<div class="empty">2명 이상 선택하면 공통 과제가 표시됩니다.</div>';$('overlapList').innerHTML='<div class="empty">선택 인원이 부족합니다.</div>';return}const common=projectNames.filter(name=>arr.every(p=>projectPct(p,name)>0));$('commonCards').innerHTML=common.length?common.map(name=>'<div class="common-card"><b>'+name+'</b><span>'+arr.map(p=>p.name+' '+fmt(projectPct(p,name))).join(' / ')+'</span></div>').join(''):'<div class="empty">선택 인원 전원이 함께 참여하는 과제는 없습니다.</div>';const overlap=projectNames.map(name=>{const members=arr.filter(p=>projectPct(p,name)>0);return {name,members}}).filter(x=>x.members.length>0&&x.members.length<arr.length).sort((a,b)=>b.members.length-a.members.length||a.name.localeCompare(b.name)).slice(0,8);$('overlapList').innerHTML=overlap.length?overlap.map(x=>{const ms=x.members.map(p=>p.name).join(', ');return '<div class="overlap-item" title="'+x.name+': '+ms+'"><div><b>'+x.name+'</b><small>'+ms+'</small></div><span class="chip warn">'+x.members.length+'/'+arr.length+'명</span></div>'}).join(''):'<div class="empty">부분 겹침도 없습니다.</div>'}
 function renderMatrix(){const headers=projectNames.map(p=>'<th title="'+p+'">'+p+'</th>').join('');const rows=PEOPLE.map(person=>'<tr class="'+(selected.has(person.name)?'selected-row':'')+'"><td><b>'+person.name+'</b><br><small>'+person.role+'</small></td>'+projectNames.map(name=>{const v=projectPct(person,name);return '<td>'+(v?'<span class="pct '+pctClass(v)+'">'+fmt(v)+'</span>':'')+'</td>'}).join('')+'</tr>').join('');$('matrixWrap').innerHTML='<table><thead><tr><th>성명</th>'+headers+'</tr></thead><tbody>'+rows+'</tbody></table>'}
-function renderAll(){renderProfiles();renderMembers();renderSelected();renderCommon();renderMatrix();renderProjectView()}
-$('memberSearch').addEventListener('input',renderMembers);$('sampleBtn').addEventListener('click',()=>{selected.has('이유정')?selected.delete('이유정'):selected.add('이유정');renderAll()});$('clearBtn').addEventListener('click',()=>{selected.clear();renderAll()});$('projectSearch').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing){projQuery=$('projectSearch').value.trim();renderProjectView()}});window.togglePerson=togglePerson;window.focusProject=focusProject;window.jumpProject=jumpProject;
+function renderAll(){renderTeams();renderProfiles();renderMembers();renderSelected();renderCommon();renderMatrix();renderProjectView()}
+$('memberSearch').addEventListener('input',renderMembers);$('sampleBtn').addEventListener('click',()=>{selected.has('이유정')?selected.delete('이유정'):selected.add('이유정');renderAll()});$('clearBtn').addEventListener('click',()=>{selected.clear();renderAll()});$('projectSearch').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing){projQuery=$('projectSearch').value.trim();renderProjectView()}});window.togglePerson=togglePerson;window.toggleTeam=toggleTeam;window.focusProject=focusProject;window.jumpProject=jumpProject;
 const mwrap=$('matrixWrap');
 function setCol(i,on){mwrap.querySelectorAll('tr').forEach(tr=>{const c=tr.cells[i];if(c)c.classList.toggle('colhi',on)})}
 mwrap.addEventListener('mouseover',e=>{const cell=e.target.closest('td,th');if(cell&&cell.cellIndex>0)setCol(cell.cellIndex,true)});
