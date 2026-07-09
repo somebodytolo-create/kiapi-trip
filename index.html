@@ -56,6 +56,7 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 .primary:hover{background:#1a44bd}
 .ghost{background:#f1f3f6;color:var(--soft)}
 .ghost:hover{background:#e8ebef;color:var(--ink)}
+.ghost.mini{height:28px;padding:0 10px;font-size:12px;font-weight:600;margin-top:8px}
 .soft-accent{background:var(--accent-soft);color:var(--accent);border:1px solid #b9cef7}
 .soft-accent:hover{background:#dfeafd;border-color:var(--accent)}
 .toolbar{display:grid;grid-template-columns:1fr auto auto;gap:8px;margin-bottom:14px}
@@ -73,7 +74,6 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 .profile-head small{color:var(--muted)}
 .profile-total{font-size:28px;font-weight:800;letter-spacing:-.02em;color:var(--accent);line-height:1.1;font-variant-numeric:tabular-nums}
 .project-chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px;margin-top:12px}
-.project-tags{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px}
 .project-chip{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:10px 12px;font-weight:700;font-size:13.5px}
 .project-chip small{display:block;color:var(--muted);font-weight:500;margin-top:4px}
 .project-chip.link{cursor:pointer;transition:.12s}
@@ -105,16 +105,6 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 .overlap-item{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:11px 14px;background:var(--card)}
 .overlap-item b{font-weight:700}
 .overlap-item small{display:block;color:var(--muted);margin-top:2px;line-height:1.5}
-/* ── person cards ── */
-.person-list{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.person-card{border:1px solid var(--line);border-radius:14px;padding:15px;background:var(--card);cursor:pointer;transition:.15s;box-shadow:0 4px 14px rgba(16,24,40,.04)}
-.person-card:hover{border-color:#c9d1da}
-.person-card.selected{border-color:#a7c0f2;outline:3px solid rgba(29,78,216,.1);background:#fdfeff}
-.person-card h3{font-size:15.5px;font-weight:800;margin:0 0 2px}
-.person-card small{color:var(--muted)}
-.person-card strong{font-size:15.5px;font-weight:800;font-variant-numeric:tabular-nums}
-.person-card.low .meter i{background:#d69e2e}
-.person-card.low strong{color:var(--amber)}
 /* ── matrix ── */
 .matrix{overflow-x:auto}
 .matrix table{border-collapse:collapse;width:auto}
@@ -143,12 +133,11 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 /* ── responsive ── */
 /* ── pct scale ── */
 .pct.p10{background:#f1f3f6;color:#6b7280}.pct.p20{background:#e3edff;color:#1a44bd}.pct.p30{background:#b9d0fa;color:#12306e}.pct.p40{background:#1d4ed8;color:#fff}
-.tag-pct.t10{color:#8a919c}.tag-pct.t20{color:#1d4ed8}.tag-pct.t30{color:#1a44bd}.tag-pct.t40{color:#12306e}
 /* ── dark theme ── */
 [data-theme=dark]{--bg:#0f1218;--card:#171b23;--ink:#e7eaf1;--soft:#bcc2cf;--muted:#8b93a5;--line:#272d39;--accent:#5b8bf5;--accent-soft:#1c2941;--amber:#d9a94e;--red:#f07070;color-scheme:dark}
 [data-theme=dark] body{background:var(--bg)}
 [data-theme=dark] .hero{background:linear-gradient(135deg,#0c1426,#14264a 60%,#0d3a51)}
-[data-theme=dark] .panel,[data-theme=dark] .profile-card,[data-theme=dark] .person-card{box-shadow:none}
+[data-theme=dark] .panel,[data-theme=dark] .profile-card{box-shadow:none}
 [data-theme=dark] ::selection{background:#28407a}
 [data-theme=dark] .top{background:rgba(15,18,24,.85)}
 [data-theme=dark] .top-tabs a:hover{background:#1e242f;color:var(--ink)}
@@ -173,8 +162,6 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 [data-theme=dark] .common-card b{color:#9db9f5}
 [data-theme=dark] .common-card span{color:#7e8697}
 [data-theme=dark] .empty{background:#13161d;border-color:#2b3140}
-[data-theme=dark] .person-card:hover{border-color:#3a4252}
-[data-theme=dark] .person-card.selected{background:#151b29;border-color:#3b5aa6}
 [data-theme=dark] .matrix th,[data-theme=dark] .matrix td{border-color:#232936}
 [data-theme=dark] .matrix th{background:#1b202b}
 [data-theme=dark] .matrix td:first-child{background:var(--card)}
@@ -191,32 +178,26 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 [data-theme=dark] .pct.p20{background:#1d2f52;color:#8fb0f5}
 [data-theme=dark] .pct.p30{background:#2b4884;color:#cdddff}
 [data-theme=dark] .pct.p40{background:#3f6de0;color:#fff}
-[data-theme=dark] .tag-pct.t10{color:#7e8697}
-[data-theme=dark] .tag-pct.t20{color:#7ea3f7}
-[data-theme=dark] .tag-pct.t30{color:#9db9f5}
-[data-theme=dark] .tag-pct.t40{color:#c4d6fa}
 [data-theme=dark] .rule-badge{background:#1e242f;border-color:#272d39;color:#9aa2b1}
 [data-theme=dark] .rule-badge .rb{background:#272d39;color:#b4bac7}
 [data-theme=dark] .rule-badge .rb.warn{background:#332711;color:#d9a94e}
 [data-theme=dark] .rule-badge .rb.bad{background:#3a1717;color:#f08a8a}
 [data-theme=dark] .lead-tag.co{background:#1e242f;color:#9aa2b1}
-@media(max-width:1100px){.duo,.quick-layout,.hero-inner{grid-template-columns:1fr}.person-list{grid-template-columns:repeat(2,1fr)}.figures{flex-wrap:wrap}.figure{flex:1;min-width:150px}}
-@media(max-width:720px){.hero{padding:28px 16px 28px}.band{padding:28px 16px 36px}.top-inner{padding:0 16px}.brand span{display:none}.figures{flex-direction:column}.toolbar,.common-cards,.person-list{grid-template-columns:1fr}}
+@media(max-width:1100px){.duo,.quick-layout,.hero-inner{grid-template-columns:1fr}.figures{flex-wrap:wrap}.figure{flex:1;min-width:150px}}
+@media(max-width:720px){.hero{padding:28px 16px 28px}.band{padding:28px 16px 36px}.top-inner{padding:0 16px}.brand span{display:none}.figures{flex-direction:column}.toolbar,.common-cards{grid-template-columns:1fr}}
 </style></head>
 <body>
-<nav class="top"><div class="top-inner"><div class="brand"><svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="6" fill="#1d4ed8"/><rect x="5" y="5" width="5" height="5" rx="1.5" fill="#fff"/><rect x="12" y="5" width="5" height="5" rx="1.5" fill="#99b9f7"/><rect x="5" y="12" width="5" height="5" rx="1.5" fill="#99b9f7"/><rect x="12" y="12" width="5" height="5" rx="1.5" fill="#fff"/></svg>과제 참여 현황<span>KIAPI 전략기획본부 · 2026년 7월</span></div><div class="top-right"><div class="top-tabs"><a href="#sec-trip">공통 과제 찾기</a><a href="#sec-project">과제별 참여자</a><a href="#sec-people">참여 현황</a><a href="#sec-matrix">매트릭스</a></div><button id="themeBtn" class="theme-btn" title="다크모드 전환">🌙</button></div></div></nav>
+<nav class="top"><div class="top-inner"><div class="brand"><svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="6" fill="#1d4ed8"/><rect x="5" y="5" width="5" height="5" rx="1.5" fill="#fff"/><rect x="12" y="5" width="5" height="5" rx="1.5" fill="#99b9f7"/><rect x="5" y="12" width="5" height="5" rx="1.5" fill="#99b9f7"/><rect x="12" y="12" width="5" height="5" rx="1.5" fill="#fff"/></svg>과제 참여 현황<span>KIAPI 전략기획본부 · 2026년 7월</span></div><div class="top-right"><div class="top-tabs"><a href="#sec-trip">공통 과제 찾기</a><a href="#sec-project">과제별 참여자</a><a href="#sec-matrix">매트릭스</a></div><button id="themeBtn" class="theme-btn" title="다크모드 전환">🌙</button></div></div></nav>
 <header class="hero"><div class="hero-inner"><div><h1>전략기획본부 7월 과제 참여 현황</h1><p class="lede">이름을 클릭하면 개인별 참여 과제 카드가 바로 표시되고, 여러 인원을 선택하면 출장 신청용 공통 과제를 함께 찾을 수 있습니다.</p></div>
 <div class="figures"><div class="figure"><strong>42</strong><span>전략기획 인원</span><small>퇴사자 제외 기준</small></div><div class="figure"><strong>24</strong><span>참여 과제</span><small>참여율 시트 기준</small></div><div class="figure warn"><strong>2</strong><span>100% 미달</span><small>예준호 · 윤윤기</small></div></div></div></header>
 <main>
 <section id="sec-trip" class="band tint"><div class="band-inner"><div class="sec-head"><h2>출장 공통 과제 찾기</h2><p>이름을 클릭하면 선택되면서 가운데에 개인 카드가 표시되고, 여러 명을 선택하면 오른쪽에서 공통 과제를 찾아 줍니다.</p></div>
 <div class="sec-body duo"><div class="panel"><div class="toolbar"><input id="memberSearch" placeholder="이름으로 빠르게 찾기"><button class="soft-accent" id="sampleBtn">이유정 추가/해제</button><button class="ghost" id="clearBtn">선택 해제</button></div><div id="memberGrid" class="member-grid"></div><div id="selectedStrip" class="selected-strip"></div></div>
-<div id="profilePanel" class="profile-card"></div>
+<div id="profileStack" class="result-col"></div>
 <div class="result-col"><div class="panel"><p class="sub-title">전원 공통 과제 <small>— 출장 신청에 바로 쓸 수 있는 후보</small></p><div id="commonCards" class="common-cards"></div></div><div class="panel"><p class="sub-title">부분 겹침 <small>— 전원 공통이 없을 때 대안</small></p><div id="overlapList" class="overlap-list"></div></div></div></div></div></section>
 <section id="sec-project" class="band alt"><div class="band-inner"><div class="sec-head"><h2>과제별 참여자 보기</h2><p>과제를 선택하면 참여자와 참여율이 표시됩니다. 개인 카드의 과제를 눌러도 이곳으로 연결됩니다. 검색은 Enter.</p></div>
 <div class="sec-body quick-layout"><div class="list-col"><input id="projectSearch" placeholder="과제명 검색 후 Enter" style="margin-bottom:10px"><div id="projectList" class="name-list"></div></div><div id="projectPanel" class="profile-card"></div></div></div></section>
-<section id="sec-people" class="band gray"><div class="band-inner"><div class="sec-head"><h2>참여 현황 한눈에</h2><p>카드를 클릭하면 출장 선택에 추가/해제됩니다. 과제별 인원·규모는 위의 '과제별 참여자 보기'에서 확인하세요.</p></div>
-<div class="sec-body"><div id="personList" class="person-list"></div></div></div></section>
-<section id="sec-matrix" class="band alt"><div class="band-inner"><div class="sec-head"><h2>참여율 매트릭스</h2><p>선택 인원은 표에서 강조됩니다. 셀에 마우스를 올리면 행·열이 함께 강조됩니다.</p></div>
+<section id="sec-matrix" class="band gray"><div class="band-inner"><div class="sec-head"><h2>참여율 매트릭스</h2><p>선택 인원은 표에서 강조됩니다. 셀에 마우스를 올리면 행·열이 함께 강조됩니다.</p></div>
 <div class="sec-body panel matrix"><div id="matrixWrap"></div></div>
 <div class="note">원본: 참여율 시트 - 인건비관리(26년) 기준 (7월, 시트 캡처본 반영) · 3책5공(국가연구개발혁신법 시행령 제64조): 동시수행 5과제·연구책임자 3과제 이내 — 책임자는 연구비 대시보드(kiapirnd) 과제목록 기준, 주관과제 책임자만 3책 산정(공동기관 책임자 미포함), 잔여기간 4개월 미만 등 제외과제는 반영하지 않은 단순 집계</div></div></section>
 </main><script>
@@ -226,29 +207,26 @@ const PROJECT_PI={"(과)원격지원":{pi:"김봉섭",lead:1},"(산)SDV보안평
 function ruleInfo(p){const lead=[],co=[];for(const[n,v]of Object.entries(PROJECT_PI))if(v.pi===p.name)(v.lead?lead:co).push(n);return{lead,co,part:p.projects.length}}
 function ruleBadge(p){const r=ruleInfo(p);const state=(r.lead.length>3||r.part>5)?' bad':r.lead.length===3?' warn':'';const tip='3책5공(국가연구개발혁신법 시행령 제64조): 동시수행 5과제, 연구책임자 3과제 이내'+(r.lead.length?' | 책임과제(주관): '+r.lead.join(', '):'')+(r.co.length?' | 공동기관 책임 '+r.co.length+'건('+r.co.join(', ')+') — 3책 미포함':'')+' | 잔여기간 4개월 미만 등 제외과제 미반영 단순 집계';return '<span class="rule-badge" title="'+tip+'">3책/5공 <span class="rb'+state+'">'+r.lead.length+'/'+r.part+'</span></span>'}
 const selected=new Set(['이유정']);
-let focusedName='이유정';
 let focusedProject=projectNames[0];
 let projQuery='';
 const $=id=>document.getElementById(id);
 function fmt(v){return Number(v).toFixed(Number(v)%1===0?0:1)+'%'}
 function pctClass(v){return v>=40?'p40':v>=30?'p30':v>=20?'p20':'p10'}
-function pctTextClass(v){return v>=40?'t40':v>=30?'t30':v>=20?'t20':'t10'}
 function projectPct(person,name){const hit=person.projects.find(p=>p.name===name);return hit?hit.pct:0}
 function selectedPeople(){return PEOPLE.filter(p=>selected.has(p.name))}
 function togglePerson(name){selected.has(name)?selected.delete(name):selected.add(name);renderAll()}
-function focusPerson(name){focusedName=name;renderAll()}
 function focusProject(name){focusedProject=name;renderProjectView()}
 function jumpProject(name){projQuery='';$('projectSearch').value='';focusProject(name);document.getElementById('sec-project').scrollIntoView({behavior:'smooth',block:'nearest'})}
 function projectParticipants(name){return PEOPLE.filter(p=>projectPct(p,name)>0).map(p=>({name:p.name,role:p.role,pct:projectPct(p,name)})).sort((a,b)=>b.pct-a.pct||a.name.localeCompare(b.name))}
 function renderProjectView(){const list=projectNames.filter(n=>!projQuery||n.includes(projQuery));if(!list.includes(focusedProject)&&list.length)focusedProject=list[0];$('projectList').innerHTML=list.map(n=>'<button class="name-btn '+(n===focusedProject?'active':'')+'" onclick="focusProject(\''+n+'\')">'+n+' <small>'+projectParticipants(n).length+'명</small></button>').join('')||'<div class="empty">검색 결과 없음</div>';const parts=focusedProject?projectParticipants(focusedProject):[];const totalPct=parts.reduce((s,x)=>s+x.pct,0);$('projectPanel').innerHTML=focusedProject?'<div class="profile-head"><div><h3>'+focusedProject+'</h3><small>참여자 '+parts.length+'명'+(PROJECT_PI[focusedProject]?' · 책임자 <b>'+PROJECT_PI[focusedProject].pi+'</b>'+(PROJECT_PI[focusedProject].lead?'<em class="lead-tag" title="주관과제 연구책임자 — 3책(책임자 3과제 제한) 대상">주관 · 3책 대상</em>':'<em class="lead-tag co" title="공동연구개발기관 책임자 — 3책 미포함">공동기관</em>'):'')+'</small></div><div class="profile-total">'+totalPct+'%</div></div><div class="project-chips">'+parts.map(x=>'<div class="project-chip">'+x.name+(PROJECT_PI[focusedProject]&&PROJECT_PI[focusedProject].pi===x.name?'<em class="lead-tag'+(PROJECT_PI[focusedProject].lead?'':' co')+'">책임</em>':'')+'<small>'+x.role+' · '+fmt(x.pct)+'</small></div>').join('')+'</div>':'<div class="empty">과제를 선택하세요.</div>'}
-function renderQuick(){const p=PEOPLE.find(x=>x.name===focusedName)||PEOPLE[0];$('profilePanel').innerHTML='<div class="profile-head"><div><h3>'+p.name+'</h3><small>'+p.role+' · '+p.projects.length+'개 과제</small><div style="margin-top:8px">'+ruleBadge(p)+'</div></div><div class="profile-total">'+fmt(p.total)+'</div></div><div class="meter"><i style="width:'+Math.min(p.total,100)+'%"></i></div><div class="project-chips">'+p.projects.map(x=>{const v=PROJECT_PI[x.name];const t=v&&v.pi===p.name?(v.lead?'<em class="lead-tag">책임</em>':'<em class="lead-tag co">공동책임</em>'):'';return '<div class="project-chip link" title="과제별 참여자 보기로 이동" onclick="jumpProject(\''+x.name+'\')">'+x.name+t+'<small>'+fmt(x.pct)+'</small></div>'}).join('')+'</div><div style="margin-top:16px"><button class="primary" onclick="togglePerson(\''+p.name+'\')">출장 선택 추가/해제</button></div>'}
-function renderMembers(){const q=$('memberSearch').value.trim();$('memberGrid').innerHTML=PEOPLE.map(p=>'<label class="member '+(q&&!p.name.includes(q)?'hidden':'')+'" title="'+p.role+'"><input type="checkbox" value="'+p.name+'" '+(selected.has(p.name)?'checked':'')+'><span>'+p.name+'</span></label>').join('');document.querySelectorAll('#memberGrid input').forEach(box=>box.addEventListener('change',()=>{focusedName=box.value;togglePerson(box.value)}))}
+function personCard(p){return '<div class="profile-card"><div class="profile-head"><div><h3>'+p.name+'</h3><small>'+p.role+' · '+p.projects.length+'개 과제</small><div style="margin-top:8px">'+ruleBadge(p)+'</div></div><div style="text-align:right"><div class="profile-total">'+fmt(p.total)+'</div><button class="ghost mini" onclick="togglePerson(\''+p.name+'\')" title="선택에서 빼기">해제</button></div></div><div class="meter"><i style="width:'+Math.min(p.total,100)+'%"></i></div><div class="project-chips">'+p.projects.map(x=>{const v=PROJECT_PI[x.name];const t=v&&v.pi===p.name?(v.lead?'<em class="lead-tag">책임</em>':'<em class="lead-tag co">공동책임</em>'):'';return '<div class="project-chip link" title="과제별 참여자 보기로 이동" onclick="jumpProject(\''+x.name+'\')">'+x.name+t+'<small>'+fmt(x.pct)+'</small></div>'}).join('')+'</div></div>'}
+function renderProfiles(){const arr=[...selected].map(n=>PEOPLE.find(p=>p.name===n)).filter(Boolean);$('profileStack').innerHTML=arr.length?arr.map(personCard).join(''):'<div class="empty">왼쪽에서 이름을 클릭하면 개인 카드가 여기에 표시됩니다.</div>'}
+function renderMembers(){const q=$('memberSearch').value.trim();$('memberGrid').innerHTML=PEOPLE.map(p=>'<label class="member '+(q&&!p.name.includes(q)?'hidden':'')+'" title="'+p.role+'"><input type="checkbox" value="'+p.name+'" '+(selected.has(p.name)?'checked':'')+'><span>'+p.name+'</span></label>').join('');document.querySelectorAll('#memberGrid input').forEach(box=>box.addEventListener('change',()=>togglePerson(box.value)))}
 function renderSelected(){const arr=selectedPeople();$('selectedStrip').innerHTML=arr.length?arr.map(p=>'<span class="chip"><b>'+p.name+'</b> '+p.projects.length+'개</span>').join(''):'<span class="chip muted">선택된 인원이 없습니다</span>'}
 function renderCommon(){const arr=selectedPeople();if(arr.length<2){$('commonCards').innerHTML='<div class="empty">2명 이상 선택하면 공통 과제가 표시됩니다.</div>';$('overlapList').innerHTML='<div class="empty">선택 인원이 부족합니다.</div>';return}const common=projectNames.filter(name=>arr.every(p=>projectPct(p,name)>0));$('commonCards').innerHTML=common.length?common.map(name=>'<div class="common-card"><b>'+name+'</b><span>'+arr.map(p=>p.name+' '+fmt(projectPct(p,name))).join(' / ')+'</span></div>').join(''):'<div class="empty">선택 인원 전원이 함께 참여하는 과제는 없습니다.</div>';const overlap=projectNames.map(name=>{const members=arr.filter(p=>projectPct(p,name)>0);return {name,members}}).filter(x=>x.members.length>0&&x.members.length<arr.length).sort((a,b)=>b.members.length-a.members.length||a.name.localeCompare(b.name)).slice(0,8);$('overlapList').innerHTML=overlap.length?overlap.map(x=>'<div class="overlap-item"><div><b>'+x.name+'</b><small>'+x.members.map(p=>p.name).join(', ')+'</small></div><span class="chip warn">'+x.members.length+'/'+arr.length+'명</span></div>').join(''):'<div class="empty">부분 겹침도 없습니다.</div>'}
-function renderPeople(){$('personList').innerHTML=PEOPLE.map(p=>'<div class="person-card '+(p.total<100?'low ':'')+(selected.has(p.name)?'selected':'')+'" data-name="'+p.name+'"><h3>'+p.name+'</h3><small>'+p.role+' · '+p.projects.length+'개 과제</small><div style="margin-top:5px">'+ruleBadge(p)+'</div><div class="meter"><i style="width:'+Math.min(p.total,100)+'%"></i></div><strong>'+fmt(p.total)+'</strong><div class="project-tags">'+p.projects.map(x=>'<span class="chip muted"><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+x.name+'</span>'+('<b class="tag-pct '+pctTextClass(x.pct)+'" style="white-space:nowrap;flex-shrink:0">')+fmt(x.pct)+'</b></span>').join('')+'</div></div>').join('');document.querySelectorAll('.person-card').forEach(card=>card.addEventListener('click',()=>{focusedName=card.dataset.name;togglePerson(card.dataset.name)}))}
 function renderMatrix(){const headers=projectNames.map(p=>'<th title="'+p+'">'+p+'</th>').join('');const rows=PEOPLE.map(person=>'<tr class="'+(selected.has(person.name)?'selected-row':'')+'"><td><b>'+person.name+'</b><br><small>'+person.role+'</small></td>'+projectNames.map(name=>{const v=projectPct(person,name);return '<td>'+(v?'<span class="pct '+pctClass(v)+'">'+fmt(v)+'</span>':'')+'</td>'}).join('')+'</tr>').join('');$('matrixWrap').innerHTML='<table><thead><tr><th>성명</th>'+headers+'</tr></thead><tbody>'+rows+'</tbody></table>'}
-function renderAll(){renderQuick();renderMembers();renderSelected();renderCommon();renderPeople();renderMatrix();renderProjectView()}
-$('memberSearch').addEventListener('input',renderMembers);$('sampleBtn').addEventListener('click',()=>{selected.has('이유정')?selected.delete('이유정'):selected.add('이유정');focusedName='이유정';renderAll()});$('clearBtn').addEventListener('click',()=>{selected.clear();renderAll()});$('projectSearch').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing){projQuery=$('projectSearch').value.trim();renderProjectView()}});window.focusPerson=focusPerson;window.togglePerson=togglePerson;window.focusProject=focusProject;window.jumpProject=jumpProject;
+function renderAll(){renderProfiles();renderMembers();renderSelected();renderCommon();renderMatrix();renderProjectView()}
+$('memberSearch').addEventListener('input',renderMembers);$('sampleBtn').addEventListener('click',()=>{selected.has('이유정')?selected.delete('이유정'):selected.add('이유정');renderAll()});$('clearBtn').addEventListener('click',()=>{selected.clear();renderAll()});$('projectSearch').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing){projQuery=$('projectSearch').value.trim();renderProjectView()}});window.togglePerson=togglePerson;window.focusProject=focusProject;window.jumpProject=jumpProject;
 const mwrap=$('matrixWrap');
 function setCol(i,on){mwrap.querySelectorAll('tr').forEach(tr=>{const c=tr.cells[i];if(c)c.classList.toggle('colhi',on)})}
 mwrap.addEventListener('mouseover',e=>{const cell=e.target.closest('td,th');if(cell&&cell.cellIndex>0)setCol(cell.cellIndex,true)});
