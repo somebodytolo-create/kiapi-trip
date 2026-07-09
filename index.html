@@ -101,11 +101,12 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 .member.hidden{display:none}
 .member input{position:absolute;opacity:0;pointer-events:none;width:0;height:0}
 .team-row{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
-.team-btn{height:28px;padding:0 9px;border-radius:999px;font-size:12px;font-weight:600;background:var(--card);border:1px solid var(--line);color:var(--soft);white-space:nowrap}
-.team-btn small{font-size:10.5px;font-weight:600;color:var(--muted);margin-left:3px;font-variant-numeric:tabular-nums}
-.team-btn:hover{border-color:var(--accent);color:var(--accent)}
-.team-btn.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
-.team-btn.active small{color:#7396e8}
+.team-btn{flex:1 1 auto;height:28px;padding:0 9px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid;white-space:nowrap}
+.team-btn small{font-size:10.5px;font-weight:600;color:inherit;opacity:.65;margin-left:3px;font-variant-numeric:tabular-nums}
+.tc-b{background:#e9f0fd;border-color:#cddcf8;color:#1a44bd}.tc-b:hover{border-color:#1a44bd}.tc-b.active{background:#1d4ed8;border-color:#1d4ed8;color:#fff}
+.tc-g{background:#e6f5ec;border-color:#c8e8d4;color:#15803d}.tc-g:hover{border-color:#15803d}.tc-g.active{background:#178a45;border-color:#178a45;color:#fff}
+.tc-v{background:#f1edfc;border-color:#ddd3f6;color:#6d28d9}.tc-v:hover{border-color:#6d28d9}.tc-v.active{background:#7443dc;border-color:#7443dc;color:#fff}
+.tc-r{background:#fdedf3;border-color:#f8d3e1;color:#be185d}.tc-r:hover{border-color:#be185d}.tc-r.active{background:#c02765;border-color:#c02765;color:#fff}
 .selected-strip{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
 .chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 11px;font-size:12.5px;font-weight:600;background:var(--accent-soft);color:var(--accent)}
 .chip.warn{background:#fbf1de;color:var(--amber)}
@@ -174,7 +175,10 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 [data-theme=dark] .name-btn:hover{background:#1e242f}
 [data-theme=dark] .name-btn.active small{color:#7ea3f7}
 [data-theme=dark] .member:hover{border-color:#3a4252}
-[data-theme=dark] .team-btn.active small{color:#7ea3f7}
+[data-theme=dark] .tc-b{background:#1c2941;border-color:#2c3f66;color:#8fb0f5}[data-theme=dark] .tc-b.active{background:#3f6de0;border-color:#3f6de0;color:#fff}
+[data-theme=dark] .tc-g{background:#152b1e;border-color:#265a39;color:#7fd39a}[data-theme=dark] .tc-g.active{background:#22854a;border-color:#22854a;color:#fff}
+[data-theme=dark] .tc-v{background:#251d3f;border-color:#3a2f63;color:#b6a0f2}[data-theme=dark] .tc-v.active{background:#7a55e0;border-color:#7a55e0;color:#fff}
+[data-theme=dark] .tc-r{background:#331b27;border-color:#572c40;color:#ef9ec3}[data-theme=dark] .tc-r.active{background:#c2477f;border-color:#c2477f;color:#fff}
 [data-theme=dark] .meter{background:#272d39}
 [data-theme=dark] .chip.warn{background:#332711}
 [data-theme=dark] .chip.muted{background:#1e242f;color:#aab1bf;border-color:#272d39}
@@ -227,15 +231,15 @@ const PROJECT_PI={"(과)원격지원":{pi:"김봉섭",lead:1},"(산)SDV보안평
 function ruleInfo(p){const lead=[],co=[];for(const[n,v]of Object.entries(PROJECT_PI))if(v.pi===p.name)(v.lead?lead:co).push(n);return{lead,co,part:p.projects.length}}
 function ruleBadge(p){const r=ruleInfo(p);const state=(r.lead.length>3||r.part>5)?' bad':r.lead.length===3?' warn':'';const tip='3책5공(국가연구개발혁신법 시행령 제64조): 동시수행 5과제, 연구책임자 3과제 이내'+(r.lead.length?' | 책임과제(주관): '+r.lead.join(', '):'')+(r.co.length?' | 공동기관 책임 '+r.co.length+'건('+r.co.join(', ')+') — 3책 미포함':'')+' | 잔여기간 4개월 미만 등 제외과제 미반영 단순 집계';return '<span class="rule-badge" title="'+tip+'">3책/5공 <span class="rb'+state+'">'+r.lead.length+'/'+r.part+'</span></span>'}
 const TEAMS=[
-{label:"기획팀",members:["허준호","황수진","류태웅"]},
-{label:"정책팀",members:["이명수","김승철","이경모"]},
-{label:"AI팀",members:["김태형","성재호","김준영","이선호","이병욱","이정현"]},
-{label:"평가팀",members:["이명수","하성민","정경환","황영서","박선엽","김강민","양현덕"]},
-{label:"우리팀",members:["강성은","이유정","김혜지"]},
-{label:"모빌리티팀",members:["한종호","박대훈","조익현","김성영","변재국","김윤지","정한석"]},
-{label:"김천피플",members:["한종호","박대훈","김윤지","정한석"]},
-{label:"디플팀",members:["서우창","서경덕","장인식","예준호","김태민"]},
-{label:"데지팀",members:["윤형석","송인수","우현","김명준","박하영"]}];
+{label:"기획팀",c:"b",members:["허준호","황수진","류태웅"]},
+{label:"정책팀",c:"b",members:["이명수","김승철","이경모"]},
+{label:"AI팀",c:"g",members:["김태형","성재호","김준영","이선호","이병욱","이정현"]},
+{label:"평가팀",c:"g",members:["이명수","하성민","정경환","황영서","박선엽","김강민","양현덕"]},
+{label:"우리팀",c:"v",members:["강성은","이유정","김혜지"]},
+{label:"모빌리티팀",c:"v",members:["한종호","박대훈","조익현","김성영","변재국","김윤지","정한석"]},
+{label:"김천피플",c:"v",members:["한종호","박대훈","김윤지","정한석"]},
+{label:"디플팀",c:"r",members:["서우창","서경덕","장인식","예준호","김태민"]},
+{label:"데지팀",c:"r",members:["윤형석","송인수","우현","김명준","박하영"]}];
 const selected=new Set(['이유정']);
 let focusedProject=projectNames[0];
 let projQuery='';
@@ -247,7 +251,7 @@ function selectedPeople(){return PEOPLE.filter(p=>selected.has(p.name))}
 function togglePerson(name){selected.has(name)?selected.delete(name):selected.add(name);renderAll()}
 let teamFilter=null;
 function toggleTeam(i){teamFilter=teamFilter===i?null:i;renderTeams();renderMembers()}
-function renderTeams(){$('teamRow').innerHTML=TEAMS.map((t,i)=>'<button class="team-btn'+(i===teamFilter?' active':'')+'" onclick="toggleTeam('+i+')" title="'+t.members.join(', ')+'">'+t.label+'<small>'+t.members.length+'</small></button>').join('')}
+function renderTeams(){$('teamRow').innerHTML=TEAMS.map((t,i)=>'<button class="team-btn tc-'+t.c+(i===teamFilter?' active':'')+'" onclick="toggleTeam('+i+')" title="'+t.members.join(', ')+'">'+t.label+'<small>'+t.members.length+'</small></button>').join('')}
 function focusProject(name){focusedProject=name;renderProjectView()}
 function jumpProject(name){projQuery='';$('projectSearch').value='';focusProject(name);document.getElementById('sec-project').scrollIntoView({behavior:'smooth',block:'nearest'})}
 function projectParticipants(name){return PEOPLE.filter(p=>projectPct(p,name)>0).map(p=>({name:p.name,role:p.role,pct:projectPct(p,name)})).sort((a,b)=>b.pct-a.pct||a.name.localeCompare(b.name))}
