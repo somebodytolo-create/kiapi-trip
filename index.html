@@ -157,6 +157,42 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 /* ── responsive ── */
 /* ── pct scale ── */
 .pct.p10{background:#f1f3f6;color:#6b7280}.pct.p20{background:#e3edff;color:#1a44bd}.pct.p30{background:#b9d0fa;color:#12306e}.pct.p40{background:#1d4ed8;color:#fff}
+/* ── 과제 현황 · 점검 ── */
+.status-layout{display:grid;grid-template-columns:1fr minmax(300px,360px);gap:14px;align-items:start}
+.pr-head,.pr-row{display:grid;grid-template-columns:1fr 110px 54px 66px;gap:14px;align-items:center}
+.pr-head{padding:0 6px 9px;font-size:11.5px;color:var(--muted);border-bottom:1px solid var(--line);font-weight:600}
+.pr-head span:nth-child(n+3){text-align:right}
+.pr-row{padding:9px 6px;border-bottom:1px solid var(--line);cursor:pointer;transition:.12s;border-radius:7px}
+.pr-row:last-child{border-bottom:0}
+.pr-row:hover{background:var(--accent-soft)}
+.pr-row:hover .pr-name b{color:var(--accent)}
+.pr-name{min-width:0}
+.pr-name b{display:block;font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:.12s}
+.pr-name small{display:block;color:var(--muted);font-size:11.5px;margin-top:2px}
+.pr-bar{height:6px;background:var(--line);border-radius:999px;overflow:hidden}
+.pr-bar i{display:block;height:100%;background:var(--accent);border-radius:999px;opacity:.85}
+.pr-cnt{text-align:right;font-size:13.5px;font-weight:800;font-variant-numeric:tabular-nums}
+.pr-sum{text-align:right;font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.audit-item{padding:13px 4px;border-bottom:1px solid var(--line)}
+.audit-item:first-child{padding-top:2px}
+.audit-item:last-child{border-bottom:0}
+.audit-item b{font-size:14px;font-weight:800}
+.audit-item b small{font-size:11.5px;font-weight:500;color:var(--muted);margin-left:5px}
+.audit-item p{margin:5px 0 0;font-size:12px;color:var(--soft);line-height:1.65}
+.audit-tag{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:2px 9px;margin-bottom:7px;background:#f1f3f6;color:var(--muted)}
+.audit-tag.warn{background:#fbf1de;color:var(--amber)}
+.audit-tag.bad{background:#fde3e3;color:#b91c1c}
+.audit-none{padding:8px 4px;color:var(--muted);font-size:13px}
+.audit-foot{margin:14px 0 0;padding-top:13px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);line-height:1.65}
+details.raw{margin-top:14px;padding:0 22px}
+details.raw summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--soft);padding:18px 0;list-style:none;display:flex;align-items:center;gap:8px}
+details.raw summary::-webkit-details-marker{display:none}
+details.raw summary::before{content:"▶";font-size:9px;color:var(--muted);transition:transform .15s}
+details.raw[open] summary::before{transform:rotate(90deg)}
+details.raw summary:hover{color:var(--accent)}
+details.raw summary span{font-weight:500;color:var(--muted);font-size:12px}
+details.raw .matrix{padding-bottom:22px}
+@media(max-width:1100px){.status-layout{grid-template-columns:1fr}}
 /* ── dark theme ── */
 [data-theme=dark]{--bg:#0f1218;--card:#171b23;--ink:#e7eaf1;--soft:#bcc2cf;--muted:#8b93a5;--line:#272d39;--accent:#5b8bf5;--accent-soft:#1c2941;--amber:#d9a94e;--red:#f07070;color-scheme:dark}
 [data-theme=dark] body{background:var(--bg)}
@@ -211,6 +247,9 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 [data-theme=dark] .rule-badge .rb.warn{background:#332711;color:#d9a94e}
 [data-theme=dark] .rule-badge .rb.bad{background:#3a1717;color:#f08a8a}
 [data-theme=dark] .lead-tag.co{background:#1e242f;color:#9aa2b1}
+[data-theme=dark] .audit-tag{background:#1e242f;color:#9aa2b1}
+[data-theme=dark] .audit-tag.warn{background:#332711;color:#d9a94e}
+[data-theme=dark] .audit-tag.bad{background:#3a1717;color:#f08a8a}
 @media(max-width:1100px){.duo,.quick-layout,.hero-inner{grid-template-columns:1fr}.figures{flex-wrap:wrap}.figure{flex:1;min-width:150px}}
 @media(max-width:720px){.hero{padding:28px 16px 28px}.band{padding:28px 16px 36px}.top-inner{padding:0 16px}.brand span{display:none}.figures{flex-direction:column}.toolbar,.common-cards,.overlap-list{grid-template-columns:1fr}}
 .credit{font-weight:700;background:linear-gradient(90deg,var(--accent),#7c9ef8 45%,var(--accent));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:credit-shine 3.2s linear infinite}
@@ -220,9 +259,9 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 @media (prefers-reduced-motion:reduce){.credit,.credit i{animation:none}}
 </style></head>
 <body>
-<nav class="top"><div class="top-inner"><div class="brand"><svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="6" fill="#1d4ed8"/><rect x="5" y="5" width="5" height="5" rx="1.5" fill="#fff"/><rect x="12" y="5" width="5" height="5" rx="1.5" fill="#99b9f7"/><rect x="5" y="12" width="5" height="5" rx="1.5" fill="#99b9f7"/><rect x="12" y="12" width="5" height="5" rx="1.5" fill="#fff"/></svg>과제 참여 현황<span>KIAPI 전략기획본부 · 2026년 8월</span></div><div class="top-right"><div class="top-tabs"><a href="#sec-trip">공통 과제 찾기</a><a href="#sec-project">과제별 참여자</a><a href="#sec-matrix">매트릭스</a></div><button id="themeBtn" class="theme-btn" title="다크모드 전환">🌙</button></div></div></nav>
+<nav class="top"><div class="top-inner"><div class="brand"><svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="6" fill="#1d4ed8"/><rect x="5" y="5" width="5" height="5" rx="1.5" fill="#fff"/><rect x="12" y="5" width="5" height="5" rx="1.5" fill="#99b9f7"/><rect x="5" y="12" width="5" height="5" rx="1.5" fill="#99b9f7"/><rect x="12" y="12" width="5" height="5" rx="1.5" fill="#fff"/></svg>과제 참여 현황<span>KIAPI 전략기획본부 · 2026년 8월</span></div><div class="top-right"><div class="top-tabs"><a href="#sec-trip">공통 과제 찾기</a><a href="#sec-project">과제별 참여자</a><a href="#sec-status">과제 현황·점검</a></div><button id="themeBtn" class="theme-btn" title="다크모드 전환">🌙</button></div></div></nav>
 <header class="hero"><div class="hero-inner"><div><h1>전략기획본부 8월 과제 참여 현황</h1><p class="lede">이름을 클릭하면 개인별 참여 과제 카드가 바로 표시되고, 여러 인원을 선택하면 출장 신청용 공통 과제를 함께 찾을 수 있습니다.</p></div>
-<div class="figures"><div class="figure"><strong>41</strong><span>전략기획 인원</span><small>퇴사자 제외 기준</small></div><div class="figure"><strong>25</strong><span>참여 과제</span><small>참여율 시트 기준</small></div><div class="figure warn"><strong>2</strong><span>100% 미달</span><small>예준호 · 윤윤기</small></div></div></div></header>
+<div class="figures"><div class="figure"><strong>41</strong><span>전략기획 인원</span><small>퇴사자 제외 기준</small></div><div class="figure"><strong>25</strong><span>참여 과제</span><small>참여율 시트 기준</small></div><div class="figure"><strong>2</strong><span>본부 외 배정</span><small>예준호 20% · 윤윤기 10%</small></div></div></div></header>
 <main>
 <section id="sec-trip" class="band tint"><div class="band-inner"><div class="sec-head"><h2>출장 공통 과제 찾기</h2><p>이름을 클릭하면 아래에 개인 카드가 나란히 표시되고, 여러 명을 선택하면 오른쪽에서 공통 과제를 찾아 줍니다. 팀명을 누르면 해당 팀원만 표시되고, 다시 누르면 전체 명단으로 돌아갑니다.</p></div>
 <div class="sec-body duo"><div class="panel"><div class="toolbar"><input id="memberSearch" placeholder="이름으로 빠르게 찾기"><button class="soft-accent" id="sampleBtn">이유정 추가/해제</button><button class="ghost" id="clearBtn">선택 해제</button></div><div id="teamRow" class="team-row"></div><div id="memberGrid" class="member-grid"></div><div id="teamAllWrap"></div><div id="selectedStrip" class="selected-strip"></div></div>
@@ -230,8 +269,13 @@ button{height:42px;border:0;border-radius:10px;padding:0 15px;font-weight:700;cu
 <div id="profileStack" class="card-row"></div></div></section>
 <section id="sec-project" class="band alt"><div class="band-inner"><div class="sec-head"><h2>과제별 참여자 보기</h2><p>과제를 선택하면 참여자와 참여율이 표시됩니다. 개인 카드의 과제를 눌러도 이곳으로 연결됩니다. 검색은 Enter. 참여자는 전략기획본부 인원만 표시됩니다.</p></div>
 <div class="sec-body quick-layout"><div class="list-col"><input id="projectSearch" placeholder="과제명 검색 후 Enter" style="margin-bottom:10px"><div id="projectList" class="name-list"></div></div><div id="projectPanel" class="profile-card"></div></div></div></section>
-<section id="sec-matrix" class="band gray"><div class="band-inner"><div class="sec-head"><h2>참여율 매트릭스</h2><p>선택 인원은 표에서 강조됩니다. 셀에 마우스를 올리면 행·열이 함께 강조됩니다.</p></div>
-<div class="sec-body panel matrix"><div id="matrixWrap"></div></div>
+<section id="sec-status" class="band gray"><div class="band-inner"><div class="sec-head"><h2>과제 현황과 점검</h2><p>과제별로 몇 명이 붙어 있고 인건비가 얼마나 실려 있는지를 정렬해서 보여줍니다. 과제를 클릭하면 참여자 목록으로 이동합니다. 오른쪽은 이번 달 확인이 필요한 항목만 모은 것입니다.</p></div>
+<div class="sec-body status-layout">
+<div class="panel"><p class="sub-title">과제별 참여 규모 <small>— 참여 인원 순</small></p>
+<div class="pr-head"><span>과제</span><span></span><span>인원</span><span>총 참여율</span></div>
+<div id="projRank"></div></div>
+<div class="panel"><p class="sub-title">이번 달 점검 <small id="auditCount"></small></p><div id="auditList"></div></div></div>
+<details class="raw panel"><summary>참여율 원본 표 보기 <span>— 41명 × 25과제, 시트 대조용</span></summary><div class="matrix"><div id="matrixWrap"></div></div></details>
 <div class="note">2026년 8월 참여율 시트(인건비관리) 기준 · 3책5공은 혁신법 시행령 제64조 기준 단순 집계 — 주관과제 책임자만 3책에 포함, 제외 규정(잔여기간 4개월 미만 등)은 미반영 · made by <span class="credit">유정<i>✦</i></span></div></div></section>
 </main><script>
 const PEOPLE=[{"name":"강성은","role":"팀장","total":100.0,"projects":[{"name":"(과)원격지원","pct":20},{"name":"(산)SDV보안평가센터","pct":20},{"name":"(산)초안전플랫폼","pct":20},{"name":"(산)인력양성27","pct":20},{"name":"(국)EV컨버전","pct":20}]},{"name":"김강민","role":"주임","total":100.0,"projects":[{"name":"(과)강화학습","pct":20},{"name":"(경)운전능력평가","pct":20},{"name":"(산)기능재구성","pct":20},{"name":"(산)기능조합","pct":20},{"name":"(산)휴머노이드안전","pct":20}]},{"name":"김명준","role":"주임","total":100.0,"projects":[{"name":"(과)강화학습","pct":30},{"name":"(과)3Tier통합검증","pct":20},{"name":"(산)합성데이터","pct":10},{"name":"(산)SBOM","pct":20},{"name":"(산)피지컬AI","pct":20}]},{"name":"김봉섭","role":"실장","total":100.0,"projects":[{"name":"(과)원격지원","pct":20},{"name":"(과)강화학습","pct":20},{"name":"(산)SDV보안평가센터","pct":20},{"name":"(산)제조AI","pct":20},{"name":"(산)SBOM","pct":20}]},{"name":"김성영","role":"주임","total":100.0,"projects":[{"name":"(국)전기차안전성","pct":20},{"name":"(산)SDV보안평가센터","pct":20},{"name":"(산)구동모터모듈","pct":20},{"name":"(산)인력양성27","pct":20},{"name":"(국)EV컨버전","pct":20}]},{"name":"김승철","role":"선임","total":100.0,"projects":[{"name":"(과)원격지원","pct":20},{"name":"(산)SDV보안평가센터","pct":30},{"name":"(산)초안전플랫폼","pct":20},{"name":"(산)인력양성27","pct":10},{"name":"(산)제조AI","pct":20}]},{"name":"김윤지","role":"연구원","total":100.0,"projects":[{"name":"(국)전기차안전성","pct":20},{"name":"(산)SDV보안평가센터","pct":20},{"name":"(산)구동모터모듈","pct":20},{"name":"(산)초안전플랫폼","pct":20},{"name":"(국)EV컨버전","pct":20}]},{"name":"김준영","role":"주임","total":100.0,"projects":[{"name":"(경)사고재현","pct":20},{"name":"(과)원격지원","pct":20},{"name":"(산)초안전플랫폼","pct":20},{"name":"(산)인력양성27","pct":20},{"name":"(산)고성능플랫폼","pct":20}]},{"name":"김태민","role":"주임","total":100.0,"projects":[{"name":"(산)혼합현실","pct":10},{"name":"(산)T-CAR","pct":10},{"name":"(경)운전능력평가","pct":20},{"name":"(산)SDV보안평가센터","pct":20},{"name":"(산)인포테인먼트","pct":40}]},{"name":"김태형","role":"팀장","total":100.0,"projects":[{"name":"(경)사고재현","pct":20},{"name":"(과)원격지원","pct":20},{"name":"(산)초안전플랫폼","pct":20},{"name":"(산)합성데이터","pct":20},{"name":"(산)고성능플랫폼","pct":20}]},{"name":"김혜지","role":"연구원","total":100.0,"projects":[{"name":"(과)원격지원","pct":20},{"name":"(산)SDV보안평가센터","pct":40},{"name":"(산)초안전플랫폼","pct":10},{"name":"(산)인력양성27","pct":20},{"name":"(국)EV컨버전","pct":10}]},{"name":"류태웅","role":"연구원","total":100.0,"projects":[{"name":"(산)SDV보안평가센터","pct":20},{"name":"(산)인력양성27","pct":20},{"name":"(과)3Tier통합검증","pct":20},{"name":"(산)합성데이터","pct":20},{"name":"(산)고성능플랫폼","pct":20}]},{"name":"박대훈","role":"선임","total":100.0,"projects":[{"name":"(과)강화학습","pct":20},{"name":"(산)SDV보안평가센터","pct":20},{"name":"(산)AAM통합평가","pct":20},{"name":"(국)EV컨버전","pct":20},{"name":"(산)고성능플랫폼","pct":20}]},{"name":"박선엽","role":"주임","total":100.0,"projects":[{"name":"(경)운전능력평가","pct":20},{"name":"(산)기능재구성","pct":20},{"name":"(과)3Tier통합검증","pct":10},{"name":"(산)기능조합","pct":30},{"name":"(산)휴머노이드안전","pct":20}]},{"name":"박하영","role":"주임","total":100.0,"projects":[{"name":"(산)T-CAR","pct":10},{"name":"(과)3Tier통합검증","pct":20},{"name":"(산)합성데이터","pct":30},{"name":"(산)SBOM","pct":20},{"name":"(산)피지컬AI","pct":20}]},{"name":"변재국","role":"주임","total":100.0,"projects":[{"name":"(국)전기차안전성","pct":20},{"name":"(산)SDV보안평가센터","pct":20},{"name":"(산)초안전플랫폼","pct":30},{"name":"(산)AAM인버터","pct":10},{"name":"(산)AAM통합평가","pct":20}]},{"name":"서경덕","role":"주임","total":100.0,"projects":[{"name":"(산)T-CAR","pct":20},{"name":"(과)원격지원","pct":20},{"name":"(과)3Tier통합검증","pct":20},{"name":"(산)SBOM","pct":20},{"name":"(산)인포테인먼트","pct":20}]},{"name":"서우창","role":"팀장","total":100.0,"projects":[{"name":"(산)인력양성27","pct":10},{"name":"(과)3Tier통합검증","pct":20},{"name":"(산)합성데이터","pct":30},{"name":"(산)SBOM","pct":20},{"name":"(산)인포테인먼트","pct":20}]},{"name":"성재호","role":"주임","total":100.0,"projects":[{"name":"(경)사고재현","pct":20},{"name":"(과)원격지원","pct":20},{"name":"(산)초안전플랫폼","pct":20},{"name":"(산)인력양성27","pct":20},{"name":"(산)고성능플랫폼","pct":20}]},{"name":"송인수","role":"주임","total":100.0,"projects":[{"name":"(산)초안전플랫폼","pct":20},{"name":"(과)3Tier통합검증","pct":20},{"name":"(산)합성데이터","pct":20},{"name":"(산)SBOM","pct":20},{"name":"(산)피지컬AI","pct":20}]},{"name":"양은주","role":"책임","total":100.0,"projects":[{"name":"(산)혼합현실","pct":20},{"name":"(산)시험표준","pct":20},{"name":"(산)T-CAR","pct":20},{"name":"(산)합성데이터","pct":20},{"name":"(산)제조AI","pct":20}]},{"name":"양현덕","role":"연구원","total":100.0,"projects":[{"name":"(경)운전능력평가","pct":20},{"name":"(산)SDV보안평가센터","pct":20},{"name":"(산)기능재구성","pct":20},{"name":"(과)3Tier통합검증","pct":20},{"name":"(산)휴머노이드안전","pct":20}]},{"name":"예준호","role":"주임","total":80.0,"projects":[{"name":"(산)혼합현실","pct":20},{"name":"(산)시험표준","pct":20},{"name":"(산)T-CAR","pct":20},{"name":"(산)SBOM","pct":20}]},{"name":"우현","role":"주임","total":100.0,"projects":[{"name":"(산)혼합현실","pct":20},{"name":"(과)원격지원","pct":20},{"name":"(과)3Tier통합검증","pct":20},{"name":"(산)합성데이터","pct":20},{"name":"(산)피지컬AI","pct":20}]},{"name":"윤경수","role":"책임","total":100.0,"projects":[{"name":"(산)T-CAR","pct":20},{"name":"(산)AAM인버터","pct":10},{"name":"(산)인력양성27","pct":20},{"name":"(과)3Tier통합검증","pct":20},{"name":"(산)고성능플랫폼","pct":30}]},{"name":"윤윤기","role":"책임","total":90.0,"projects":[{"name":"(국)전기차안전성","pct":20},{"name":"(경)운전능력평가","pct":20},{"name":"(산)기능재구성","pct":20},{"name":"(국)EV컨버전","pct":20},{"name":"(산)휴머노이드안전","pct":10}]},{"name":"윤형석","role":"팀장","total":100.0,"projects":[{"name":"(과)3Tier통합검증","pct":20},{"name":"(산)기능조합","pct":20},{"name":"(산)합성데이터","pct":20},{"name":"(산)SBOM","pct":20},{"name":"(산)피지컬AI","pct":20}]},{"name":"이명수","role":"팀장","total":100.0,"projects":[{"name":"(경)운전능력평가","pct":20},{"name":"(산)기능재구성","pct":20},{"name":"(과)3Tier통합검증","pct":20},{"name":"(산)기능조합","pct":20},{"name":"(산)휴머노이드안전","pct":20}]},{"name":"이병욱","role":"주임","total":100.0,"projects":[{"name":"(과)원격지원","pct":20},{"name":"(과)강화학습","pct":20},{"name":"(산)초안전플랫폼","pct":20},{"name":"(과)3Tier통합검증","pct":20},{"name":"(산)합성데이터","pct":20}]},{"name":"이선호","role":"주임","total":100.0,"projects":[{"name":"(경)사고재현","pct":20},{"name":"(과)원격지원","pct":20},{"name":"(산)초안전플랫폼","pct":20},{"name":"(과)3Tier통합검증","pct":20},{"name":"(산)고성능플랫폼","pct":20}]},{"name":"이유정","role":"주임","total":100.0,"projects":[{"name":"(산)SDV보안평가센터","pct":20},{"name":"(산)초안전플랫폼","pct":40},{"name":"(과)3Tier통합검증","pct":20},{"name":"(국)EV컨버전","pct":20}]},{"name":"이정현","role":"주임","total":100.0,"projects":[{"name":"(과)원격지원","pct":20},{"name":"(산)SDV보안평가센터","pct":20},{"name":"(산)기능재구성","pct":20},{"name":"(산)초안전플랫폼","pct":20},{"name":"(산)고성능플랫폼","pct":20}]},{"name":"장인식","role":"주임","total":100.0,"projects":[{"name":"(산)혼합현실","pct":10},{"name":"(산)시험표준","pct":20},{"name":"(산)SDV보안평가센터","pct":20},{"name":"(산)초안전플랫폼","pct":30},{"name":"(산)인포테인먼트","pct":20}]},{"name":"정경환","role":"주임","total":100.0,"projects":[{"name":"(경)운전능력평가","pct":20},{"name":"(산)SDV보안평가센터","pct":20},{"name":"(산)기능재구성","pct":20},{"name":"(과)3Tier통합검증","pct":20},{"name":"(산)기능조합","pct":20}]},{"name":"정한석","role":"연구원","total":100.0,"projects":[{"name":"(국)전기차안전성","pct":20},{"name":"(과)원격지원","pct":20},{"name":"(산)AAM통합평가","pct":20},{"name":"(국)EV컨버전","pct":40}]},{"name":"조익현","role":"주임","total":100.0,"projects":[{"name":"(국)전기차안전성","pct":20},{"name":"(산)구동모터모듈","pct":20},{"name":"(산)초안전플랫폼","pct":20},{"name":"(산)AAM통합평가","pct":20},{"name":"(국)EV컨버전","pct":20}]},{"name":"하성민","role":"주임","total":100.0,"projects":[{"name":"(과)원격지원","pct":20},{"name":"(경)운전능력평가","pct":20},{"name":"(산)기능재구성","pct":20},{"name":"(과)3Tier통합검증","pct":20},{"name":"(산)기능조합","pct":20}]},{"name":"한종호","role":"책임","total":100.0,"projects":[{"name":"(국)전기차안전성","pct":20},{"name":"(산)구동모터모듈","pct":10},{"name":"(산)AAM인버터","pct":20},{"name":"(산)AAM통합평가","pct":30},{"name":"(국)EV컨버전","pct":20}]},{"name":"허준호","role":"팀장","total":100.0,"projects":[{"name":"(산)SDV보안평가센터","pct":20},{"name":"(산)인력양성27","pct":20},{"name":"(산)합성데이터","pct":20},{"name":"(산)제조AI","pct":20},{"name":"(산)고성능플랫폼","pct":20}]},{"name":"황수진","role":"주임","total":100.0,"projects":[{"name":"(과)원격지원","pct":20},{"name":"(산)SDV보안평가센터","pct":20},{"name":"(산)초안전플랫폼","pct":20},{"name":"(과)3Tier통합검증","pct":20},{"name":"(산)제조AI","pct":20}]},{"name":"황영서","role":"주임","total":100.0,"projects":[{"name":"(과)원격지원","pct":10},{"name":"(과)강화학습","pct":20},{"name":"(산)기능재구성","pct":10},{"name":"(과)3Tier통합검증","pct":40},{"name":"(산)휴머노이드안전","pct":20}]}];
@@ -249,6 +293,8 @@ const TEAMS=[
 {label:"김천피플",c:"v",members:["윤윤기","한종호","박대훈","김윤지","정한석"]},
 {label:"디플팀",c:"r",members:["양은주","서우창","서경덕","장인식","예준호","김태민"]},
 {label:"데지팀",c:"r",members:["양은주","윤형석","송인수","우현","김명준","박하영"]}];
+// 전략기획본부 참여율 시트 밖에 배정된 인원 (합계 100% 미만의 사유)
+const OUTSIDE={"윤윤기":{pct:10,where:"기업지원"},"예준호":{pct:20,where:"시험평가본부"}};
 const selected=new Set(['이유정']);
 let focusedProject=projectNames[0];
 let projQuery='';
@@ -266,6 +312,32 @@ function focusProject(name){focusedProject=name;renderProjectView()}
 function jumpProject(name){projQuery='';$('projectSearch').value='';focusProject(name);document.getElementById('sec-project').scrollIntoView({behavior:'smooth',block:'nearest'})}
 function projectParticipants(name){return PEOPLE.filter(p=>projectPct(p,name)>0).map(p=>({name:p.name,role:p.role,pct:projectPct(p,name)})).sort((a,b)=>b.pct-a.pct||a.name.localeCompare(b.name))}
 function renderProjectView(){const list=projectNames.filter(n=>!projQuery||n.includes(projQuery));if(!list.includes(focusedProject)&&list.length)focusedProject=list[0];$('projectList').innerHTML=list.map(n=>'<button class="name-btn '+(n===focusedProject?'active':'')+'" onclick="focusProject(\''+n+'\')">'+n+' <small>'+projectParticipants(n).length+'명</small></button>').join('')||'<div class="empty">검색 결과 없음</div>';const parts=focusedProject?projectParticipants(focusedProject):[];const totalPct=parts.reduce((s,x)=>s+x.pct,0);$('projectPanel').innerHTML=focusedProject?'<div class="profile-head"><div><h3>'+focusedProject+'</h3><small>참여자 '+parts.length+'명'+(PROJECT_PI[focusedProject]?' · 책임자 <b>'+PROJECT_PI[focusedProject].pi+'</b>'+(PROJECT_PI[focusedProject].lead?'<em class="lead-tag" title="주관과제 연구책임자 — 3책(책임자 3과제 제한) 대상">주관 · 3책 대상</em>':'<em class="lead-tag co" title="공동연구개발기관 책임자 — 3책 미포함">공동기관</em>'):'')+'</small></div><div class="profile-total">'+totalPct+'%</div></div><div class="project-chips">'+parts.map(x=>'<div class="project-chip">'+x.name+(PROJECT_PI[focusedProject]&&PROJECT_PI[focusedProject].pi===x.name?'<em class="lead-tag'+(PROJECT_PI[focusedProject].lead?'':' co')+'">책임</em>':'')+'<small>'+x.role+' · '+fmt(x.pct)+'</small></div>').join('')+'</div>':'<div class="empty">과제를 선택하세요.</div>'}
+function renderProjRank(){
+ const rows=projectNames.map(n=>{const ps=projectParticipants(n);return{name:n,cnt:ps.length,sum:ps.reduce((s,x)=>s+x.pct,0)}})
+  .sort((a,b)=>b.cnt-a.cnt||b.sum-a.sum||a.name.localeCompare(b.name));
+ const max=Math.max(...rows.map(r=>r.cnt));
+ $('projRank').innerHTML=rows.map(r=>{const v=PROJECT_PI[r.name];const meta=v?(v.lead?'주관':'공동')+' · 책임자 '+v.pi:'책임자 미등록';
+  return '<div class="pr-row" onclick="jumpProject(\''+r.name+'\')" title="'+r.name+' 참여자 보기"><div class="pr-name"><b>'+r.name+'</b><small>'+meta+'</small></div>'
+   +'<div class="pr-bar"><i style="width:'+Math.round(r.cnt/max*100)+'%"></i></div>'
+   +'<div class="pr-cnt">'+r.cnt+'명</div><div class="pr-sum">'+r.sum+'%</div></div>'}).join('')}
+function auditItems(){const out=[];
+ PEOPLE.forEach(p=>{const who=p.name,role=p.role;
+  if(p.total<100){const o=OUTSIDE[who],rest=100-p.total;
+   if(o&&o.pct===rest)out.push({lv:0,person:who,tag:'본부 외 배정',who,role,txt:'전략기획본부 참여율은 '+fmt(p.total)+'이고, 나머지 '+fmt(rest)+'는 '+o.where+'에 배정되어 있습니다.'});
+   else out.push({lv:1,person:who,tag:'참여율 미달',who,role,txt:'참여율 합계가 '+fmt(p.total)+'입니다. '+fmt(rest)+'가 어느 과제에도 배정되지 않았습니다.'});}
+  if(p.projects.length>5)out.push({lv:2,person:who,tag:'5공 초과',who,role,txt:'동시수행 과제가 '+p.projects.length+'개로 한도 5개를 넘었습니다.'});
+  const r=ruleInfo(p);
+  if(r.lead.length>3)out.push({lv:2,person:who,tag:'3책 초과',who,role,txt:'주관과제 책임을 '+r.lead.length+'개 맡고 있습니다 (한도 3개) — '+r.lead.join(', ')});
+  else if(r.lead.length===3)out.push({lv:1,person:who,tag:'3책 한도 도달',who,role,txt:'주관과제 책임 3개로 한도에 도달했습니다. 추가 수임이 불가합니다 — '+r.lead.join(', ')});});
+ Object.keys(PROJECT_PI).forEach(n=>{if(!projectNames.includes(n))out.push({lv:1,person:null,tag:'참여자 없음',who:n,role:'',txt:'등록된 과제이지만 이번 달 참여 인원이 없습니다.'})});
+ return out.sort((a,b)=>b.lv-a.lv)}
+function renderAudit(){const items=auditItems();
+ const act=items.filter(x=>x.lv>0).length;
+ $('auditCount').textContent=act?'— '+act+'건 확인 필요':(items.length?'— 확인 필요 항목 없음':'— 이상 없음');
+ if(!items.length){$('auditList').innerHTML='<div class="audit-none">참여율 합계·3책5공 모두 정상입니다.</div>';return}
+ const flagged=new Set(items.filter(x=>x.person).map(x=>x.person)).size;
+ $('auditList').innerHTML=items.map(x=>'<div class="audit-item"><span class="audit-tag '+(x.lv===2?'bad':x.lv===1?'warn':'')+'">'+x.tag+'</span><div><b>'+x.who+(x.role?'<small>'+x.role+'</small>':'')+'</b></div><p>'+x.txt+'</p></div>').join('')
+  +'<p class="audit-foot">나머지 '+(PEOPLE.length-flagged)+'명은 전략기획본부 참여율 100%, 5과제 이내로 이상이 없습니다. 3책5공은 혁신법 시행령 제64조 기준 단순 집계이며 제외 규정은 반영되지 않았습니다.</p>'}
 function personCard(p){return '<div class="profile-card sm"><div class="profile-head"><div><h3>'+p.name+'<span class="tot">'+fmt(p.total)+'</span></h3><small>'+p.role+' · '+p.projects.length+'개 과제 &nbsp;'+ruleBadge(p)+'</small></div><button class="xbtn" onclick="togglePerson(\''+p.name+'\')" title="선택에서 빼기">✕</button></div><div class="mini-projects">'+p.projects.map(x=>{const v=PROJECT_PI[x.name];const t=v&&v.pi===p.name?(v.lead?'<em class="lead-tag">책임</em>':'<em class="lead-tag co">공동책임</em>'):'';return '<div class="mini-proj" title="과제별 참여자 보기로 이동" onclick="jumpProject(\''+x.name+'\')"><span>'+x.name+t+'</span><b>'+fmt(x.pct)+'</b></div>'}).join('')+'</div></div>'}
 function renderProfiles(){const arr=[...selected].map(n=>PEOPLE.find(p=>p.name===n)).filter(Boolean);$('profileStack').innerHTML=arr.map(personCard).join('')}
 function renderMembers(){const q=$('memberSearch').value.trim();const tm=teamFilter===null?null:TEAMS[teamFilter].members;$('memberGrid').innerHTML=PEOPLE.map(p=>'<label class="member '+((q&&!p.name.includes(q))||(tm&&!tm.includes(p.name))?'hidden':'')+'" title="'+p.role+'"><input type="checkbox" value="'+p.name+'" '+(selected.has(p.name)?'checked':'')+'><span>'+p.name+'</span></label>').join('');document.querySelectorAll('#memberGrid input').forEach(box=>box.addEventListener('change',()=>togglePerson(box.value)));const t=teamFilter===null?null:TEAMS[teamFilter];$('teamAllWrap').innerHTML=t?'<button class="ghost mini team-all" onclick="selectTeamAll()">'+t.label+' '+(t.members.every(n=>selected.has(n))?'전체 해제':'전체 선택 ('+t.members.length+'명)')+'</button>':''}
@@ -283,5 +355,5 @@ function applyTheme(t){document.documentElement.dataset.theme=t;themeBtn.textCon
 let savedTheme='light';try{savedTheme=localStorage.getItem('trip-theme')||'light'}catch(e){}
 applyTheme(savedTheme);
 themeBtn.addEventListener('click',()=>applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
-renderAll();
+renderAll();renderProjRank();renderAudit();
 </script></body></html>
