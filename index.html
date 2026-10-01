@@ -285,8 +285,8 @@ const PROJECT_PI={"(과)원격지원":{pi:"김봉섭",lead:1},"(산)SDV보안평
 function ruleInfo(p){const lead=[],co=[];for(const[n,v]of Object.entries(PROJECT_PI))if(v.pi===p.name)(v.lead?lead:co).push(n);return{lead,co,part:p.projects.length}}
 function ruleBadge(p){const r=ruleInfo(p);const state=(r.lead.length>3||r.part>5)?' bad':r.lead.length===3?' warn':'';const tip='3책5공(국가연구개발혁신법 시행령 제64조): 동시수행 5과제, 연구책임자 3과제 이내'+(r.lead.length?' | 책임과제(주관): '+r.lead.join(', '):'')+(r.co.length?' | 공동기관 책임 '+r.co.length+'건('+r.co.join(', ')+') — 3책 미포함':'')+' | 잔여기간 4개월 미만 등 제외과제 미반영 단순 집계';return '<span class="rule-badge" title="'+tip+'">3책/5공 <span class="rb'+state+'">'+r.lead.length+'/'+r.part+'</span></span>'}
 const TEAMS=[
-{label:"기획팀",c:"b",members:["김봉섭","허준호","황수진","류태웅"]},
-{label:"정책팀",c:"b",members:["김봉섭","이명수","김승철"]},
+{label:"기획팀",c:"b",members:["김봉섭","허준호","황수진","류태웅","모상진"]},
+{label:"정책팀",c:"b",members:["김봉섭","이명수","김승철","이민향"]},
 {label:"AI팀",c:"g",members:["김태형","성재호","김준영","이선호","이병욱","이정현"]},
 {label:"평가팀",c:"g",members:["이명수","하성민","정경환","황영서","박선엽","김강민","양현덕"]},
 {label:"우리팀",c:"v",members:["윤윤기","강성은","이유정","김혜지"]},
